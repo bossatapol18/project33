@@ -38,7 +38,7 @@ if (isset($_POST) && !empty($_POST)) {
     $standard_detail = $_POST['standard_detail'];
     $standard_mandatory = $_POST['standard_mandatory'];
    // $standard_tacking = $_POST['standard_tacking'];
-    $standard_note = $_POST['standard_note'];
+    $standard_note = $_POST['it'];
     $date = date('Y-m-d');
     //$standard_status = $_POST['standard_status'];
    // $standard_day = datetodb( $_POST['standard_day']);

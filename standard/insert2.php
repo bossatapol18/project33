@@ -38,11 +38,8 @@ $date_today = (date('d/m/Y H:i:s'));
                                 <div class="card-body">
                                     <div class="">
                                         <div class="form-group mb-2">
-                                            <label for="">วันที่ประชุมสมอ. </label>
-                                            <div class="input-group">
-
-                                                <input id="" type="date" name="standard_survey" class=" form-control" required>
-                                            </div>
+                                        <input type="radio" name="standard_source" onclick="document.getElementById('text').disabled=true" value="1">
+                                        <p>วาระจากการประชุม</p>
                                         </div>
                                     </div>
                                 </div>
@@ -54,16 +51,17 @@ $date_today = (date('d/m/Y H:i:s'));
                                 <div class="card-body">
                                     <div class="">
                                         <div class="form-group mb-2">
-                                            <label for="">จดหมายสอบถามจากสมอ. </label>
-                                            <div class="input-group">
-
-                                                <input id="" type="date" name="standard_pick" class=" form-control" required>
+                                        <input type="radio" name="standard_source" value="2" onclick="document.getElementById('text').disabled=false">
+                                        <label>จดหมาย สมอ.</label><br>
+                                        <lable>จดหมายสอบถามสมอ.</lable>
+                                        <input type="text" id="text" class="form-control" name="main_pick">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-4">
                             <div class="card mt-4">
                                 <div class="card-body">
@@ -71,6 +69,19 @@ $date_today = (date('d/m/Y H:i:s'));
                                         <div class="form-group mb-2">
                                             <label for="">วาระจากที่ประชุม สมอ. </label>
                                             <input type="text" name="standard_meet" class="form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card mt-4">
+                                <div class="card-body">
+                                    <div class="">
+                                        <div class="form-group mb-2">
+                                            <label for="">วันที่ประชุม สมอ. </label>
+                                            <input type="text" id="date1" name="standard_survey" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -111,8 +122,12 @@ $date_today = (date('d/m/Y H:i:s'));
                                         <div class="form-group mb-2">
                                             <div class="form-group mb-2">
                                                 <label for="">ประเภทมาตรฐาน (มาตรฐานทั่วไป/มาตรฐานบังคับ)</label>
-                                                <input type="text" name="standard_mandatory" class="form-control" required>
-                                                <!--ทำ drop down ดึงจาก db ก็ได้จะได้เหมือนๆกัน ทำหน้า insert แล้วอย่าลืมดึงหน้า edit-->
+                                                <select class="form-select" aria-label="Default select example" name="standard_mandatory">
+                                                    <option selected>เลือกประเภทมาตรฐาน</option>
+                                                    <option value="มาตรฐานทั่วไป">มาตรฐานทั่วไป</option>
+                                                    <option value="มาตรฐานบังคับ">มาตรฐานบังคับ</option>
+                                                    </select>
+                                            </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -390,5 +405,5 @@ $date_today = (date('d/m/Y H:i:s'));
     </section>
 
 </body>
-
+<?php require 'datepick.php' ; ?>
 </html>

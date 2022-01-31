@@ -3,11 +3,7 @@ $page = (isset($_GET['page'])) ? $_GET['page'] : '';
 
 if (isset($_GET['standard_idtb']) && !empty($_GET['standard_idtb'])) {
     $standard_idtb = $_GET['standard_idtb'];
-    // $sql = "SELECT * , a.standard_idtb,a.standard_status,b.statuss_name AS name_status 
-    //  FROM main_std a INNER JOIN select_status b ON a.standard_status = b.id_statuss WHERE standard_idtb = '$standard_idtb' ";
-    // $query = sqlsrv_query($conn, $sql);
-    // $result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
-    $sql = "SELECT * FROM main_std WHERE standard_idtb='$standard_idtb'";
+    $sql = "SELECT * ,a.standard_source,b.source_id,b.source_name AS name_source FROM main_std a JOIN source_tb b ON a.standard_source = b.source_id WHERE standard_idtb='$standard_idtb'";
 $query = sqlsrv_query($conn, $sql);
 $result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
 
@@ -73,10 +69,18 @@ $query3 = sqlsrv_query($conn, $sql3);
 
                 <div class="col-sm-6">
                     <div class="card   mb-3" style="max-width:100%">
-                        <div class="card-header text-white bg-primary">ที่มาวาระจากในที่ประชุมสมอ.</div>
+                        <?php if($result['standard_source'] == '1') : ?>
+                            <div class="card-header text-white bg-primary"><?php echo $result['name_source'] ; ?></div>
                         <div class="card-body">
                             <p class="card-text">วันที่ <?php echo dateThai($result['standard_survey']); ?><br>วาระที่ <?php echo $result['standard_meet']; ?></p>
                         </div>
+                        <?php endif ;?>
+                        <?php if($result['standard_source'] == '2') : ?>
+                            <div class="card-header text-white bg-primary"><?php echo $result['name_source'] ; ?></div>
+                        <div class="card-body">
+                            <p class="card-text">วันที่ <?php echo dateThai($result['standard_survey']); ?><br>วาระที่ <?php echo $result['standard_meet']; ?></p>
+                        </div>
+                        <?php endif ;?>
                     </div>
                 </div>
 
@@ -90,14 +94,6 @@ $query3 = sqlsrv_query($conn, $sql3);
                     </div>
                 </div>
 
-                <div class="col-sm-6">
-                    <div class="card  mb-3" style="max-width: 100%">
-                        <div class="card-header text-white bg-primary ">จดหมายสอบถามจาก สมอ.</div>
-                        <div class="card-body">
-                            <p class="card-text">วันที่ <?php echo dateThai($result['standard_pick']); ?> </p>
-                        </div>
-                    </div>
-                </div>
 
                 <!--ซ้าย-->
                 <div class="col-sm-6">

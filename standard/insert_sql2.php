@@ -11,6 +11,7 @@ if ($mode == "insert_data") {
     $standard_number = $_REQUEST["standard_number"];
     $standard_detail = $_REQUEST["standard_detail"];
     $standard_mandatory = $_REQUEST["standard_mandatory"];
+    $standard_source = $_REQUEST["standard_source"];
     // วันที่ประชุม
     $standard_survey = ($_REQUEST["standard_survey"]);
     // จดหมายสอบถามสมอ
@@ -24,8 +25,8 @@ if ($mode == "insert_data") {
     //$type_id = $_REQUEST["type_id"];
     $id_doc_status = $_REQUEST["id_doc_status"];
     $department_id = $_REQUEST["department_id"];
-    $sql = "INSERT INTO main_std ( standard_mandatory , standard_meet  , standard_number , standard_detail , standard_note  ,standard_create, standard_survey,standard_pick ) 
-      VALUES ('$standard_mandatory','$standard_meet','$standard_number','$standard_detail','$standard_note' ,  '$date' ,'$standard_survey','$standard_pick')";
+    $sql = "INSERT INTO main_std (standard_source, standard_mandatory , standard_meet  , standard_number , standard_detail , standard_note  ,standard_create, standard_survey,standard_pick ) 
+      VALUES ('$standard_source', '$standard_mandatory','$standard_meet','$standard_number','$standard_detail','$standard_note' ,  '$date' ,'$standard_survey','$standard_pick')";
 
     //$conn->query($sql);
     //sqlsrv_close($conn);

@@ -179,7 +179,7 @@ $query2 = sqlsrv_query($conn , $sql2);
                             <td class="align-middle"><?= $data['standard_meet'] ?></td>
                             <td class="align-middle"><?= dateThai($data['standard_survey'])  ?></td>
                             <td class="align-middle"><?= $data['standard_number'] ?></td>
-                            <td class="align-middle"><?= $data['standard_mandatory'] ?></td>
+                            <td class="align-middle"><?= $data['standard_detail'] ?></td>
                             <?php if($data2['status_date'] == '') : ?>
                             <td class="align-middle">ยังไม่ได้ระบุสถานะ</td>
                             <?php endif ; ?>

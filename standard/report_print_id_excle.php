@@ -27,14 +27,7 @@ header("Expires: 0");
     require '../connection/connection.php';
     if (isset($_GET['standard_idtb']) && !empty($_GET['standard_idtb'])) {
         $standard_idtb = $_GET['standard_idtb'];
-        $sql = "SELECT *  , a.standard_status,b.id_statuss,b.statuss_name AS name_status ,
-    c.agency_id,d.agency_id,d.agency_name AS name_agency ,
-    e.department_id,f.department_id,f.department_name AS name_depart FROM main_std a 
-    INNER JOIN select_status b ON a.standard_status = b.id_statuss 
-    INNER JOIN dimension_agency c ON a.standard_idtb = c.standard_idtb 
-    INNER JOIN agency_tb d ON c.agency_id = d.agency_id
-    INNER JOIN dimension_department e ON a.standard_idtb = e.standard_idtb
-    INNER JOIN department_tb f ON e.department_id = f.department_id WHERE a.standard_idtb = '$standard_idtb'";
+        $sql = "SELECT * FROM main_std WHERE standard_idtb = '$standard_idtb'";
         $query = sqlsrv_query($conn, $sql);
         $data = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
     }
@@ -50,7 +43,7 @@ header("Expires: 0");
                             <th rowspan="3" style="background-color: #3cb371;">เลขที่มอก.</th>
                             <th rowspan="3" style="background-color: #3cb371;">ชื่อมาตรฐาน</th>
                             <th rowspan="3" style="background-color: #3cb371;">หน่วยงานที่สามารถทดสอบได้</th>
-                            <th rowspan="3" style="background-color: #3cb371;">มาตรฐานบังคับ</th>
+                            <th rowspan="3" style="background-color: #3cb371;">ประเภทมาตรฐาน</th>
                             <th rowspan="3" style="background-color: #3cb371;">หน่วยงานที่ขอ</th>
                             <?php for ($ii = 0; $ii < 12; $ii++ ) : ?>
                             <th colspan="3" style="background-color: #ffd747;">ความก้าวหน้าของการขอรับการแต่งตั้ง<?php echo substr($ii, 28) ;?></th>
@@ -102,8 +95,26 @@ header("Expires: 0");
                                     <?= $iii++ ?>.<?= $result3['name_department']; ?><br>
                                 <?php } ?>
                             </td>
-                            <td class="align-middle"><?= DateThai($data['standard_day']); ?></td>
-                            <td class="align-middle"><?= $data['name_status'] ?></td>
+                            <td>
+                                <?php
+                                $iii = 1;
+                                $standarsidtb = $_REQUEST['standard_idtb'];
+                                $sql8 = "SELECT * FROM doc_status WHERE standard_idtb  = '$standarsidtb' ";
+                                $query8 = sqlsrv_query($conn, $sql8);
+                                while ($result8 = sqlsrv_fetch_array($query8, SQLSRV_FETCH_ASSOC)) { ?>
+                                    <?= $iii++ ?>.<?= $result8['status_date']; ?><br>
+                                <?php } ?>
+                            </td>
+                            <td>
+                                <?php
+                                $iii = 1;
+                                $standarsidtb = $_REQUEST['standard_idtb'];
+                                $sql7 = "SELECT * FROM doc_status WHERE standard_idtb  = '$standarsidtb' ";
+                                $query7 = sqlsrv_query($conn, $sql7);
+                                while ($result7 = sqlsrv_fetch_array($query7, SQLSRV_FETCH_ASSOC)) { ?>
+                                    <?= $iii++ ?>.<?= $result7['status_name']; ?><br>
+                                <?php } ?>
+                            </td>
                             <td></td>
                         </tr>
                     </tbody>

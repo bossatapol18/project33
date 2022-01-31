@@ -70,8 +70,6 @@ $date_today = (date('d/m/Y H:i:s'));
                                                        <input id="" type="text" name="status_date" class=" form-control" value="<?php echo dateThai($data2['status_date'] )?>" disabled >
                                                     <input id="mydate" type="text" name="status_date" class=" form-control"  required> 
                                                     </div>
-                                                    
-                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -119,10 +117,19 @@ $date_today = (date('d/m/Y H:i:s'));
                                     </div>
                                 </div>
 
-                                <!-- <div class="form-group mb-2">
-                                    <label for="">ประเภทผลิตภัณฑ์. </label>
-                                    <input type="text" name="type_id" class="form-control">
-                                </div> -->
+                                <div class="col-md-4">
+                                    <div class="card mt-4">
+                                        <div class="card-body">
+                                            <div class="">
+                                                <div class="form-group mb-2">
+                                                <label class="form-label">ประเภทมาตรฐาน</label>
+                                                <input type="text" name="standard_mandatory" class="form-control" value="<?php echo $result["standard_detail"] ?>">
+                                                </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="col-md-4">
                                     <div class="card mt-4">
