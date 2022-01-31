@@ -15,7 +15,7 @@ if (isset($_GET['standard_idtb']) && !empty($_GET['standard_idtb'])) {
     $query = sqlsrv_query($conn, $sql);
     $result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
 
-     $sql3 = "SELECT TOP(1) * FROM doc_status WHERE standard_idtb=" . $result['standard_idtb'] . "ORDER BY id_doc_status desc";
+     $sql3 = "SELECT TOP(1) *,a.status_name,b.id_statuss,b.statuss_name AS name_status FROM doc_status a JOIN select_status b  ON a.status_name = b.id_statuss WHERE standard_idtb=" . $result['standard_idtb'] . "ORDER BY id_doc_status desc";
     $query3 = sqlsrv_query($conn, $sql3);
     $data2 = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC);
 }
@@ -97,7 +97,7 @@ if (isset($_GET['standard_idtb']) && !empty($_GET['standard_idtb'])) {
 
 
             <p><strong>1. ชื่อมาตรฐาน : </strong> <strong style="color: red;"><?= $result['standard_detail']; ?></strong></p>
-            <p><strong>2. สถานะ :</strong> <strong style="color: green;"><?= $data2['status_name']; ?></strong></p>
+            <p><strong>2. สถานะ :</strong> <strong style="color: green;"><?= $data2['name_status']; ?></strong></p>
             <p><strong>3. รายละเอียดข้อมูลเอกสาร </strong> </p>
             <div class="row">
                 <div class="col-sm-6">
@@ -134,7 +134,7 @@ if (isset($_GET['standard_idtb']) && !empty($_GET['standard_idtb'])) {
                                 <td><?= $result['standard_detail'] ?></td>
 
                                 <?php
-                                $sql4 = "SELECT * FROM doc_status WHERE standard_idtb=" . $result['standard_idtb'] . "ORDER BY id_doc_status desc";
+                                $sql4 = "SELECT * ,a.status_name,b.id_statuss,b.statuss_name AS name_status FROM doc_status a JOIN select_status b  ON a.status_name = b.id_statuss WHERE a.standard_idtb=" . $result['standard_idtb'] . "ORDER BY a.id_doc_status desc";
                                 $query4 = sqlsrv_query($conn, $sql4);
                                 ?>
 
@@ -151,7 +151,7 @@ if (isset($_GET['standard_idtb']) && !empty($_GET['standard_idtb'])) {
                                     <?php if ($data3['status_date']) : ?>
                                         <td><?= dateThai($data3['status_date']); ?></td>
                                     <?php endif; ?>
-                                    <td class="align-middle"><?= $data3['status_name'] ?></td>
+                                    <td class="align-middle"><?= $data3['name_status'] ?></td>
                                     <?php if ($j != 1) {
                                         echo "</tr>";
                                     } ?>

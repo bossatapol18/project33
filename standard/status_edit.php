@@ -13,7 +13,7 @@ $date_today = (date('d/m/Y H:i:s'));
 </head>
 
 <body>
-    <h5 align="left" class="text-success">สถานะของเอกสารปัจจุบัน : <?php echo $data2['status_name']; ?>
+    <h5 align="left" class="text-success">สถานะของเอกสารปัจจุบัน : <?php echo $data2['name_status']; ?>
         <section class="about section-bg">
             <div class="container">
                 <div class="row">
@@ -41,12 +41,12 @@ $date_today = (date('d/m/Y H:i:s'));
                                                         $sqll = "SELECT * FROM select_status";
                                                         $queryy = sqlsrv_query($conn, $sqll);
                                                         while ($result2 = sqlsrv_fetch_array($queryy, SQLSRV_FETCH_ASSOC)) { ?>
-                                                            <?php if($data2['status_name']== $result2['statuss_name']){ $st_name = "selected"; }
+                                                            <?php if($data2['status_name']== $result2['id_statuss']){ $st_name = "selected"; }
                                                             else { $st_name = "";
 
                                                             }
                                                             ?>
-                                                            <option value="<?php echo $result2['statuss_name'];  ?>"<?php echo $st_name;  ?> >
+                                                            <option value="<?php echo $result2['id_statuss'];  ?>"<?php echo $st_name;  ?> >
                                                                 <?php echo $result2['statuss_name'];  ?></option>
                                                         <?php } ?>
                                                     </select>
@@ -117,27 +117,21 @@ $date_today = (date('d/m/Y H:i:s'));
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <div class="card mt-4">
-                                        <div class="card-body">
-                                            <div class="">
-                                                <div class="form-group mb-2">
-                                                <label class="form-label">ประเภทมาตรฐาน</label>
-                                                <input type="text" name="standard_mandatory" class="form-control" value="<?php echo $result["standard_detail"] ?>">
-                                                </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="col-md-4">
                                     <div class="card mt-4">
                                         <div class="card-body">
                                             <div class="">
                                                 <div class="form-group mb-2">
-                                                <label for="">ประเภทมาตรฐาน (มาตรฐานทั่วไป/มาตรฐานบังคับ)</label>
-                                                    <input type="text" name="standard_mandatory" class="form-control" value="<?php echo $result["standard_mandatory"] ?>">
+                                                <label class="form-label">ประเภทมาตรฐาน</label>
+                                                <select class="form-control" name="standard_mandatory" style="height: unset !important;">
+                                                    <option value="" selected disabled><?=$result['standard_mandatory']?></option>
+                                                    <?php while ($data = sqlsrv_fetch_array($query11, SQLSRV_FETCH_ASSOC)) : ?>
+                                                    <option value="<?=$data['manda_id']?>" <?=$result['standard_mandatory'] == $data['manda_id'] ? 'selected' : '' ?>>
+                                                        <?=$data['manda_name']?></option>
+                                                    <?php endwhile ;?>
+                                                </select>
+                                                            
                                                 </div>
                                             </div>
                                         </div>

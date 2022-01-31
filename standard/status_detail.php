@@ -7,7 +7,7 @@ if (isset($_GET['standard_idtb']) && !empty($_GET['standard_idtb'])) {
 $query = sqlsrv_query($conn, $sql);
 $result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
 
-$sql3 = "SELECT * FROM doc_status WHERE standard_idtb=" . $result['standard_idtb'] . "ORDER BY id_doc_status desc";
+$sql3 = "SELECT * ,a.status_name,b.id_statuss,b.statuss_name AS name_status FROM doc_status a JOIN select_status b  ON a.status_name = b.id_statuss WHERE a.standard_idtb=" . $result['standard_idtb'] . "ORDER BY a.id_doc_status desc";
  $query3 = sqlsrv_query($conn , $sql3);
  $data2 = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC) ;
 }
@@ -25,7 +25,7 @@ $query3 = sqlsrv_query($conn, $sql3);
     <form action="" method="post" enctype=multipart/form-data style="font-size:18px;" >
         <div class="container-sm">
             <div class="col-lg-12">
-                <h5 align="left" class="text-success">สถานะของเอกสารปัจจุบัน : <?php echo $data2['status_name']; ?>
+                <h5 align="left" class="text-success">สถานะของเอกสารปัจจุบัน : <?php echo $data2['name_status']; ?>
                 </h5>
                 <div class="section-title">
                     <div align="right">

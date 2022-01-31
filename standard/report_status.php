@@ -1,5 +1,3 @@
-<?php require('./fontthai.php'); ?>
-<?php require('./pdf.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +24,7 @@
 <body>
     <center>
         <?php
-        require('../connection/connection.php');
+        require('./connection/connection.php');
         $query = "SELECT * from select_status ";
         $statement = sqlsrv_query($conn, $query);
         ?>

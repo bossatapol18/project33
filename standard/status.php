@@ -110,16 +110,16 @@ $query = sqlsrv_query($conn, $sql);
 
 
 $sql2 = "SELECT * FROM select_status";
-$query2 = sqlsrv_query($conn , $sql2);
+$query2 = sqlsrv_query($conn, $sql2);
 ?>
 <section>
     <form method="post" action="">
-    <div class="section-title">
-        <h2 class="font-mirt">เอกสารทั้งหมด</h2>
-        <h3 class="font-mirt">หน้าเอกสารทั้งหมด</h3>
-    </div>
+        <div class="section-title">
+            <h2 class="font-mirt">เอกสารทั้งหมด</h2>
+            <h3 class="font-mirt">หน้าเอกสารทั้งหมด</h3>
+        </div>
 
-    <div class="container mb-5">
+        <div class="container mb-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-9">
                     <div class="card p-4 mt-3">
@@ -134,7 +134,7 @@ $query2 = sqlsrv_query($conn , $sql2);
                 </div>
             </div>
         </div>
-    
+
         <div class="tab-content font">
             <div id="home" class="container-fluid tab-pane active m-2">
                 <div align="right">
@@ -145,11 +145,10 @@ $query2 = sqlsrv_query($conn , $sql2);
                 <hr>
                 <!-- <div align="right" class="">
                     <input name="txtKeyword" type="text" id="txtKeyword" style="width:20%;"
-                        value="<?php echo $strKeyword;?>">
+                        value="<?php echo $strKeyword; ?>">
                     <button class="btn btn-primary" type="submit" value="ค้นหา">ค้นหา</button>
                 </div> -->
-                <table class="table table-hover table-responsive-xl  text-center pt-5"
-                    style="background-color: white;" id="tableall">
+                <table class="table table-hover table-responsive-xl  text-center pt-5" style="background-color: white;" id="tableall">
                     <thead>
                         <tr>
                             <th class="col-1 text-center">ลำดับที่</th>
@@ -168,76 +167,86 @@ $query2 = sqlsrv_query($conn , $sql2);
                     <tbody>
                         <?php $i = 1; ?>
                         <?php while ($data = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC)) : ?>
-                            <?php 
-                               $sql3 = "SELECT * FROM doc_status WHERE standard_idtb=" . $data['standard_idtb'] . "ORDER BY id_doc_status desc";
-                                $query3 = sqlsrv_query($conn , $sql3);
-                                ?>
+                            <?php
+                            $sql3 = "SELECT * ,a.status_name,b.id_statuss,b.statuss_name AS name_status 
+                            FROM doc_status a JOIN select_status b  ON a.status_name = b.id_statuss 
+                            WHERE a.standard_idtb=" . $data['standard_idtb'] . "ORDER BY a.id_doc_status desc";
+                            $query3 = sqlsrv_query($conn, $sql3);
+                            ?>
                             <?php $data2 = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC) ?>
-                        <tr class="text-center">
-                            <td class="align-middle"><?= $i++ ?></td>
-                            <td class="align-middle"><?= dateThai($data['standard_create'])  ?></td>
-                            <td class="align-middle"><?= $data['standard_meet'] ?></td>
-                            <td class="align-middle"><?= dateThai($data['standard_survey'])  ?></td>
-                            <td class="align-middle"><?= $data['standard_number'] ?></td>
-                            <td class="align-middle"><?= $data['standard_detail'] ?></td>
-                            <?php if($data2['status_date'] == '') : ?>
-                            <td class="align-middle">ยังไม่ได้ระบุสถานะ</td>
-                            <?php endif ; ?>
-                            <?php if($data2['status_date']) : ?>
-                            <td class="align-middle"><?= dateThai($data2['status_date']) ;?></td>
-                            <?php endif ; ?>
-                            
-                            <td class="align-middle"><?= $data2['status_name'] ?></td>
+                            <tr class="text-center">
+                                <td class="align-middle"><?= $i++ ?></td>
+                                <td class="align-middle"><?= dateThai($data['standard_create'])  ?></td>
+                                <td class="align-middle"><?= $data['standard_meet'] ?></td>
+                                <?php if ($data['standard_source'] == '1') { ?>
+                                    <td class="align-middle"><?= dateThai($data['standard_survey'])  ?></td>
+                                <?php } ?>
+                                <?php if ($data['standard_source'] == '2') { ?>
+                                    <td class="align-middle"><?= dateThai($data['standard_survey'])  ?></td>
+                                <?php } ?>
+                                <td class="align-middle"><?= $data['standard_number'] ?></td>
+                                <td class="align-middle"><?= $data['standard_detail'] ?></td>
+                                <?php if ($data2['status_date'] == '') : ?>
+                                    <td class="align-middle">ยังไม่ได้ระบุสถานะ</td>
+                                <?php endif; ?>
+                                <?php if ($data2['status_date']) : ?>
+                                    <td class="align-middle"><?= dateThai($data2['status_date']); ?></td>
+                                <?php endif; ?>
 
-                            <!-- <?php if($data2['status_name'] == 1 ) : ?>
+                                <td class="align-middle"><?= $data2['name_status'] ?></td>
+
+                                <!-- <?php if ($data2['status_name'] == 1) : ?>
                             <td class="align-middle bg-c-g " style=""><?= $data['name_status'] ?></td>
-                            <?php endif ; ?>
-                            <?php if($data2['status_name'] == 2 ) : ?>
+                            <?php endif; ?>
+                            <?php if ($data2['status_name'] == 2) : ?>
                             <td class="align-middle  text-lighred bg-c-g" style="">
                                 <?= $data['name_status'] ?></td>
-                            <?php endif ; ?>
-                            <?php if($data2['status_name'] == 3 ) : ?>
+                            <?php endif; ?>
+                            <?php if ($data2['status_name'] == 3) : ?>
                             <td class="align-middle bg-c-g" style=""><?= $data['name_status'] ?></td>
-                            <?php endif ; ?>
-                            <?php if($data2['status_name'] == 4 ) : ?>
+                            <?php endif; ?>
+                            <?php if ($data2['status_name'] == 4) : ?>
                             <td class="align-middle bg-c-g" style="">
                                 <?= $data['name_status'] ?></td>
-                            <?php endif ; ?>
-                            <?php if($data2['status_name'] == 5  ) : ?>
+                            <?php endif; ?>
+                            <?php if ($data2['status_name'] == 5) : ?>
                             <td class="align-middle bg-c-g" style=" ">
                                 <?= $data['name_status'] ?></td>
-                            <?php endif ; ?>
-                            <?php if($data2['status_name'] == 6  ) : ?>
+                            <?php endif; ?>
+                            <?php if ($data2['status_name'] == 6) : ?>
                             <td class="align-middle bg-c-g" style=" ">
                                 <?= $data['name_status'] ?></td>
-                            <?php endif ; ?>
-                            <?php if($data2['status_name'] == 7  ) : ?>
+                            <?php endif; ?>
+                            <?php if ($data2['status_name'] == 7) : ?>
                             <td class="align-middle bg-c-r">
                                 <?= $data['name_status'] ?></td>
-                            <?php endif ; ?> -->
-                            <td class="align-middle">
-                                <a href="standard_idtb=<?= $data['standard_idtb'] ?>" class="btn btn-success"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop<?php echo $data['standard_idtb']; ?>"
-                                    tyle="background-color:#31f9cb;">เรียกดูไฟล์</a>
-                                <?php require('modalstatus.php'); ?>
-                            </td>
-                            <td class="align-middle">
-                                <div class="mb-3">
-                                    <h5>
-                                        <!--กดรายงานสถานะแล้วไปหน้าไหนต่อ แล้วในหน้านั้นเป็นประมาณไหน จะได้สร้างถูก -->
-                                        <!-- <a href="?page=<?//= $_GET['page'] ?>&function=update&standard_idtb=<?//= $data['standard_idtb'] ?>" class="btn btn-sm btn-warning">แก้ไขข้อมูลสถานะ</a> -->
-                                        <a href="?page=detail&standard_idtb=<?= $data['standard_idtb'] ?>"
-                                            class="btn btn-sm font-mirt"
-                                            style="background-color:#31f9cb;">ดูรายละเอียด</a>
-                                        <!-- <a href="?page=<?//= $_GET['page'] ?>&function=reportprint&standard_idtb=<?//= $data['standard_idtb'] ?>" onclick="return confirm('คุณต้องการพิมพ์เอกสารนี้ : <?//= $data['standard_number'] ?> หรือไม่ ??')" class="btn btn-sm btn-info">พิมพ์รายงาน</a> -->
-                                        <!-- <a href="?page=<?//= $_GET['page'] ?>&function=delete&standard_idtb=<?//= $data['standard_idtb'] ?>" onclick="return confirm('คุณต้องการลบเอกสารนี้ : <?//= $data['standard_number'] ?> หรือไม่ ??')" class="btn btn-sm btn-danger">ลบเอกสาร</a> -->
-                                    </h5>
-                                </div>
-                            </td>
-                        </tr>
+                            <?php endif; ?> -->
+                                <td class="align-middle">
+                                    <a href="standard_idtb=<?= $data['standard_idtb'] ?>" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo $data['standard_idtb']; ?>" tyle="background-color:#31f9cb;">เรียกดูไฟล์</a>
+                                    <?php require('modalstatus.php'); ?>
+                                </td>
+                                <td class="align-middle">
+                                    <div class="mb-3">
+                                        <h5>
+                                            <!--กดรายงานสถานะแล้วไปหน้าไหนต่อ แล้วในหน้านั้นเป็นประมาณไหน จะได้สร้างถูก -->
+                                            <!-- <a href="?page=<? //= $_GET['page'] 
+                                                                ?>&function=update&standard_idtb=<? //= $data['standard_idtb'] 
+                                                                                                                        ?>" class="btn btn-sm btn-warning">แก้ไขข้อมูลสถานะ</a> -->
+                                            <a href="?page=detail&standard_idtb=<?= $data['standard_idtb'] ?>" class="btn btn-sm font-mirt" style="background-color:#31f9cb;">ดูรายละเอียด</a>
+                                            <!-- <a href="?page=<? //= $_GET['page'] 
+                                                                ?>&function=reportprint&standard_idtb=<? //= $data['standard_idtb'] 
+                                                                                                                            ?>" onclick="return confirm('คุณต้องการพิมพ์เอกสารนี้ : <? //= $data['standard_number'] 
+                                                                                                                                                                                                                ?> หรือไม่ ??')" class="btn btn-sm btn-info">พิมพ์รายงาน</a> -->
+                                            <!-- <a href="?page=<? //= $_GET['page'] 
+                                                                ?>&function=delete&standard_idtb=<? //= $data['standard_idtb'] 
+                                                                                                                        ?>" onclick="return confirm('คุณต้องการลบเอกสารนี้ : <? //= $data['standard_number'] 
+                                                                                                                                                                                                        ?> หรือไม่ ??')" class="btn btn-sm btn-danger">ลบเอกสาร</a> -->
+                                        </h5>
+                                    </div>
+                                </td>
+                            </tr>
 
-                        <?php  endwhile; ?>
+                        <?php endwhile; ?>
 
                     </tbody>
                 </table>

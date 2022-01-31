@@ -17,13 +17,16 @@ if (isset($_GET['standard_idtb']) && !empty($_GET['standard_idtb'])) {
 //  FROM  main_std a INNER JOIN select_status b ON a.standard_status = b.id_statuss WHERE standard_idtb = " . $_REQUEST["standard_idtb"];
 //     $query = sqlsrv_query($conn, $sql);
 //     $result = sqlsrv_fetch_array($query);
-$sql = "SELECT * FROM main_std WHERE standard_idtb='$standard_idtb'";
+$sql = "SELECT * FROM main_std  WHERE standard_idtb='$standard_idtb'";
 $query = sqlsrv_query($conn, $sql);
 $result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
 
- $sql3 = "SELECT TOP(1) * FROM doc_status WHERE standard_idtb=" . $result['standard_idtb'] . "ORDER BY id_doc_status desc";
+ $sql3 = "SELECT TOP(1) * ,a.status_name,b.id_statuss,b.statuss_name AS name_status FROM doc_status a JOIN select_status b  ON a.status_name = b.id_statuss WHERE standard_idtb=" . $result['standard_idtb'] . "ORDER BY id_doc_status desc";
  $query3 = sqlsrv_query($conn , $sql3);
  $data2 = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC) ;
+
+$sql11 ="SELECT * FROM manda_tb";
+$query11 = sqlsrv_query($conn , $sql11);
 }
 
 
@@ -37,8 +40,8 @@ if (isset($_POST) && !empty($_POST)) {
     $standard_meet = $_POST['standard_meet'];
     $standard_detail = $_POST['standard_detail'];
     $standard_mandatory = $_POST['standard_mandatory'];
+    $standard_note = $_POST['standard_note'];
    // $standard_tacking = $_POST['standard_tacking'];
-    $standard_note = $_POST['it'];
     $date = date('Y-m-d');
     //$standard_status = $_POST['standard_status'];
    // $standard_day = datetodb( $_POST['standard_day']);
@@ -50,7 +53,8 @@ if (isset($_POST) && !empty($_POST)) {
             standard_mandatory = '$standard_mandatory' ,
             standard_note = '$standard_note' 
          WHERE standard_idtb = '$standard_idtb' ";
-
+// print_r($_POST);
+// exit;
 $old_status_name = $_REQUEST['old_status_name'];
 $status_name = $_REQUEST['status_name'];
 $status_date =  datetodb($_REQUEST['status_date']);

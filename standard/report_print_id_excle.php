@@ -109,10 +109,10 @@ header("Expires: 0");
                                 <?php
                                 $iii = 1;
                                 $standarsidtb = $_REQUEST['standard_idtb'];
-                                $sql7 = "SELECT * FROM doc_status WHERE standard_idtb  = '$standarsidtb' ";
+                                $sql7 = "SELECT * ,a.status_name,b.id_statuss,b.statuss_name AS name_status FROM doc_status a JOIN select_status b  ON a.status_name = b.id_statuss WHERE standard_idtb  = '$standarsidtb' ";
                                 $query7 = sqlsrv_query($conn, $sql7);
                                 while ($result7 = sqlsrv_fetch_array($query7, SQLSRV_FETCH_ASSOC)) { ?>
-                                    <?= $iii++ ?>.<?= $result7['status_name']; ?><br>
+                                    <?= $iii++ ?>.<?= $result7['name_status']; ?><br>
                                 <?php } ?>
                             </td>
                             <td></td>

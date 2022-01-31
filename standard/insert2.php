@@ -38,8 +38,8 @@ $date_today = (date('d/m/Y H:i:s'));
                                 <div class="card-body">
                                     <div class="">
                                         <div class="form-group mb-2">
-                                        <input type="radio" name="standard_source" onclick="document.getElementById('text').disabled=true" value="1">
-                                        <p>วาระจากการประชุม</p>
+                                        <input type="radio" name="standard_source" value="1">
+                                        <label>วาระจากการประชุม</label><br>
                                         </div>
                                     </div>
                                 </div>
@@ -51,10 +51,8 @@ $date_today = (date('d/m/Y H:i:s'));
                                 <div class="card-body">
                                     <div class="">
                                         <div class="form-group mb-2">
-                                        <input type="radio" name="standard_source" value="2" onclick="document.getElementById('text').disabled=false">
+                                        <input type="radio" name="standard_source" value="2">
                                         <label>จดหมาย สมอ.</label><br>
-                                        <lable>จดหมายสอบถามสมอ.</lable>
-                                        <input type="text" id="text" class="form-control" name="main_pick">
                                             </div>
                                         </div>
                                     </div>
@@ -80,8 +78,9 @@ $date_today = (date('d/m/Y H:i:s'));
                                 <div class="card-body">
                                     <div class="">
                                         <div class="form-group mb-2">
-                                            <label for="">วันที่ประชุม สมอ. </label>
-                                            <input type="text" id="date1" name="standard_survey" class="form-control" required>
+                                        <lable>วันที่ประชุม สมอ.</lable>
+                                        <input type="text" id="date1" name="standard_survey" class="form-control" required>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -121,13 +120,16 @@ $date_today = (date('d/m/Y H:i:s'));
                                     <div class="">
                                         <div class="form-group mb-2">
                                             <div class="form-group mb-2">
-                                                <label for="">ประเภทมาตรฐาน (มาตรฐานทั่วไป/มาตรฐานบังคับ)</label>
-                                                <select class="form-select" aria-label="Default select example" name="standard_mandatory">
-                                                    <option selected>เลือกประเภทมาตรฐาน</option>
-                                                    <option value="มาตรฐานทั่วไป">มาตรฐานทั่วไป</option>
-                                                    <option value="มาตรฐานบังคับ">มาตรฐานบังคับ</option>
-                                                    </select>
-                                            </ul>
+                                            <label class="form-label">ประเภทมาตรฐาน</label>
+                                                <select class="form-control" name="standard_mandatory" style="height: unset !important;">
+                                            <option value="" selected disabled>ประเภทมาตรฐาน</option>
+                                            <?php
+                                            $sqll = "SELECT * FROM manda_tb";
+                                            $query = sqlsrv_query($conn , $sqll);
+                                            while ($data = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC)) : ?>
+                                            <option value="<?=$data['manda_id']?>"><?=$data['manda_name']?></option>
+                                            <?php endwhile;?>
+                                        </select>
                                             </div>
                                         </div>
                                     </div>
