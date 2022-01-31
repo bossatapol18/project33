@@ -29,41 +29,41 @@ $date_today = (date('d/m/Y H:i:s'));
                 </div>
 
                 <div class="container">
-                  
+
 
                     <input type="hidden" name="mode" value="insert_data">
                     <div class="row">
-                    <div class="col-md-6">
-                        <div class="card mt-4">
-                            <div class="card-body">
-                                <div class="">
-                                    <div class="form-group mb-2">
-                                        <label for="">วันที่ประชุมสมอ. </label>
-                                        <div class="input-group">
-                                          
-                                            <input id="" type="date" name="standard_survey" class=" form-control" required>
+                        <div class="col-md-6">
+                            <div class="card mt-4">
+                                <div class="card-body">
+                                    <div class="">
+                                        <div class="form-group mb-2">
+                                            <label for="">วันที่ประชุมสมอ. </label>
+                                            <div class="input-group">
+
+                                                <input id="" type="date" name="standard_survey" class=" form-control" required>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="card mt-4">
-                            <div class="card-body">
-                                <div class="">
-                                    <div class="form-group mb-2">
-                                        <label for="">จดหมายสอบถามจากสมอ. </label>
-                                        <div class="input-group">
-                                          
-                                          <input id="" type="date" name="standard_pick" class=" form-control" required>
-                                      </div>
+                        <div class="col-md-6">
+                            <div class="card mt-4">
+                                <div class="card-body">
+                                    <div class="">
+                                        <div class="form-group mb-2">
+                                            <label for="">จดหมายสอบถามจากสมอ. </label>
+                                            <div class="input-group">
+
+                                                <input id="" type="date" name="standard_pick" class=" form-control" required>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                         <div class="col-md-4">
                             <div class="card mt-4">
                                 <div class="card-body">
@@ -110,8 +110,9 @@ $date_today = (date('d/m/Y H:i:s'));
                                     <div class="">
                                         <div class="form-group mb-2">
                                             <div class="form-group mb-2">
-                                                <label for="">ประเภทมาตรฐาน (ทั่วไป/บังคับ)</label>
+                                                <label for="">ประเภทมาตรฐาน (มาตรฐานทั่วไป/มาตรฐานบังคับ)</label>
                                                 <input type="text" name="standard_mandatory" class="form-control" required>
+                                                <!--ทำ drop down ดึงจาก db ก็ได้จะได้เหมือนๆกัน ทำหน้า insert แล้วอย่าลืมดึงหน้า edit-->
                                             </div>
                                         </div>
                                     </div>

@@ -129,7 +129,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                         <div class="card-body">
                                             <div class="">
                                                 <div class="form-group mb-2">
-                                                <label for="">ประเภทมาตรฐาน (ทั่วไป/บังคับ)</label>
+                                                <label for="">ประเภทมาตรฐาน (มาตรฐานทั่วไป/มาตรฐานบังคับ)</label>
                                                     <input type="text" name="standard_mandatory" class="form-control" value="<?php echo $result["standard_mandatory"] ?>">
                                                 </div>
                                             </div>

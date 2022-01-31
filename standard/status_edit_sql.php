@@ -53,12 +53,20 @@ if (isset($_POST) && !empty($_POST)) {
 
 $old_status_name = $_REQUEST['old_status_name'];
 $status_name = $_REQUEST['status_name'];
-if($old_status_name != $status_name){
-    $sql_status = "INSERT INTO doc_status ( status_name , status_date , standard_idtb  ) 
-    VALUES ('$status_name', ' $date', '$standard_idtb')";
+$status_date =  datetodb($_REQUEST['status_date']);
+$sql_status = "INSERT INTO doc_status ( status_name , status_date , standard_idtb  ) 
+     VALUES ('$status_name', ' $status_date', '$standard_idtb')";
+     $stmt_status = sqlsrv_query($conn, $sql_status);
+     
 
-    $stmt_status = sqlsrv_query($conn, $sql_status);
-}
+//     $stmt_status = sqlsrv_query($conn, $sql_status);
+//$status_date =  $_REQUEST['status_date'];
+// if($old_status_name != $status_name){
+//     $sql_status = "INSERT INTO doc_status ( status_name , status_date , standard_idtb  ) 
+//     VALUES ('$status_name', ' $date', '$standard_idtb')";
+
+//     $stmt_status = sqlsrv_query($conn, $sql_status);
+// }
 
     
 
