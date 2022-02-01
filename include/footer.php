@@ -1,5 +1,4 @@
 <footer id="footer">
-
   <div class="container py-4 non-printable">
     <center>
       <h3 class="font-mirt">สนับสนุนโดย</h3>
@@ -16,13 +15,6 @@
       <h6 class="font-mirt">Copyright ©2021 วว•TISTR</h6> 
       </center>
 
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-      <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
     </div>
   </div>
 </footer><!-- End Footer -->
