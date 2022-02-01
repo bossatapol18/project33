@@ -44,7 +44,7 @@ require 'date.php';
         <h3 style="color: red;"><strong>ชื่อมาตรฐาน : </strong><?= $data['standard_detail'] ?></h3>
         <h4><strong>วาระจากในที่ประชุมสมอ :</strong> <?= $data['standard_meet'] ?></h4>
         <h4><strong>เลขที่มอก :</strong> <?= $data['standard_number'] ?></h4>
-        <h4><strong>มาตรฐานบังคับ : </strong><?= $data['name_manda'] ?></h4>
+        <h4><strong>ประเภทมาตรฐาน : </strong><?= $data['name_manda'] ?></h4>
         <table class="table table-bordered " style="width: 100%;" border="">
                     <thead>
                         <tr>

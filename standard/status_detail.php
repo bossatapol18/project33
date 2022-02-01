@@ -78,7 +78,7 @@ $query3 = sqlsrv_query($conn, $sql3);
                         <?php if($result['standard_source'] == '2') : ?>
                             <div class="card-header text-white bg-primary"><?php echo $result['name_source'] ; ?></div>
                         <div class="card-body">
-                            <p class="card-text">วันที่ <?php echo dateThai($result['standard_survey']); ?><br>วาระที่ <?php echo $result['standard_meet']; ?></p>
+                            <p class="card-text">วันที่ <?php echo dateThai($result['standard_survey']); ?><br></p>
                         </div>
                         <?php endif ;?>
                     </div>
