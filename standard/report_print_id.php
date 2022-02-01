@@ -11,7 +11,7 @@ if (isset($_GET['standard_idtb']) && !empty($_GET['standard_idtb'])) {
     //  WHERE a.standard_idtb = '$standard_idtb' ";
     // $query = sqlsrv_query($conn, $sql);
     // $result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
-    $sql = "SELECT * FROM main_std WHERE standard_idtb='$standard_idtb'";
+    $sql = "SELECT * ,main_std.standard_mandatory,manda_tb.manda_id,manda_tb.manda_name AS name_manda   FROM main_std JOIN manda_tb ON main_std.standard_mandatory = manda_tb.manda_id  WHERE standard_idtb='$standard_idtb'";
     $query = sqlsrv_query($conn, $sql);
     $result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
 
@@ -130,7 +130,7 @@ if (isset($_GET['standard_idtb']) && !empty($_GET['standard_idtb'])) {
                         <tbody>
 
                             <tr>
-                                <td><?= $result['standard_mandatory'] ?></td>
+                                <td><?= $result['name_manda'] ?></td>
                                 <td><?= $result['standard_detail'] ?></td>
 
                                 <?php

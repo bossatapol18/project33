@@ -23,7 +23,7 @@ require 'date.php';
     require '../connection/connection.php';
     if (isset($_GET['standard_idtb']) && !empty($_GET['standard_idtb'])) {
         $standard_idtb = $_GET['standard_idtb'];
-        $sql = "SELECT * FROM main_std WHERE standard_idtb = '$standard_idtb'";
+        $sql = "SELECT * ,a.standard_mandatory,b.manda_id,b.manda_name AS name_manda FROM main_std a JOIN manda_tb b ON a.standard_mandatory = b.manda_id WHERE standard_idtb = '$standard_idtb'";
         $query = sqlsrv_query($conn, $sql);
         $data = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
     }
@@ -44,7 +44,7 @@ require 'date.php';
         <h3 style="color: red;"><strong>ชื่อมาตรฐาน : </strong><?= $data['standard_detail'] ?></h3>
         <h4><strong>วาระจากในที่ประชุมสมอ :</strong> <?= $data['standard_meet'] ?></h4>
         <h4><strong>เลขที่มอก :</strong> <?= $data['standard_number'] ?></h4>
-        <h4><strong>มาตรฐานบังคับ : </strong><?= $data['standard_mandatory'] ?></h4>
+        <h4><strong>มาตรฐานบังคับ : </strong><?= $data['name_manda'] ?></h4>
         <table class="table table-bordered " style="width: 100%;" border="">
                     <thead>
                         <tr>

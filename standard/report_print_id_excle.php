@@ -83,7 +83,16 @@ header("Expires: 0");
                                     <?= $ii++ ?>.<?= $result2['name_agency']; ?><br>
                                 <?php } ?>
                             </td>
-                            <td class="align-middle"><?= $data['standard_mandatory'] ?></td>
+                            <?php
+                                $ii = 1;
+                                $standarsidtb = $_REQUEST['standard_idtb'];
+                                $sql2 = "SELECT * ,a.standard_mandatory,b.manda_id,b.manda_name AS name_manda FROM main_std a INNER JOIN manda_tb b ON a.standard_mandatory= b.manda_id 
+                                WHERE standard_idtb  = '$standarsidtb' ";
+                                $query2 = sqlsrv_query($conn, $sql2);
+                                while ($result2 = sqlsrv_fetch_array($query2, SQLSRV_FETCH_ASSOC)) { ?>
+                                    <?= $ii++ ?>.<?= $result2['name_manda']; ?><br>
+                                <?php } ?>
+                            </td>
                             <td>
                                 <?php
                                 $iii = 1;
