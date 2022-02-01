@@ -83,6 +83,7 @@ header("Expires: 0");
                                     <?= $ii++ ?>.<?= $result2['name_agency']; ?><br>
                                 <?php } ?>
                             </td>
+                            <td>
                             <?php
                                 $ii = 1;
                                 $standarsidtb = $_REQUEST['standard_idtb'];
