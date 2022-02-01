@@ -24,15 +24,15 @@
                 } elseif (isset($_GET['page']) && $_GET['page'] == 'report') {
                     include('report.php');
                 } elseif (isset($_GET['page']) && $_GET['page'] == 'report_status1') {
-                    include('report_status1.php');
+                    include('report_status/index.php');
                 }elseif (isset($_GET['page']) && $_GET['page'] == 'report_list1') {
-                include('report_list1.php');
+                include('report_list/index.php');
                 }elseif (isset($_GET['page']) && $_GET['page'] == 'report_date2') {
-                include('report_date3.php');
+                include('report_date/report_date3.php');
                 }elseif (isset($_GET['page']) && $_GET['page'] == 'report_number1') {
-                include('report_number1.php');
+                include('report_number/index.php');
                 }elseif (isset($_GET['page']) && $_GET['page'] == 'report_agency1') {
-                include('report_agency1.php');
+                include('report_agency/index.php');
                 }elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
                 include('../logout/index.php');
                 }

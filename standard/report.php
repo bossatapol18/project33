@@ -16,8 +16,9 @@
                                 <div class="card-body">
                                     <div class="">
                                         <div class="pd-t">
-                                        <h1 class="font-mirt"><label><a href="./standard/report_status/index.php">1. รายงานรายสถานะของเอกสาร</a></label><br><br>
-                                        <label> <a href="./standard/report_list/index.php">2. รายงานรายชื่อศูนย์</a></label><br><br>
+                                        <h1 class="font-mirt">
+                                            <label><a href="./standard/report_status/index.php">1. รายงานรายสถานะของเอกสาร</a></label><br><br>
+                                            <label> <a href="./standard/report_list/index.php">2. รายงานรายชื่อศูนย์</a></label><br><br>
                                             <label> <a href="./standard/report_date/report_date3.php">3. รายงานตามช่วงเวลา</a></label><br><br>
                                             <label> <a href="./standard/report_number/index.php">4. รายงานตามเลข มอก.</a></label><br><br>
                                             <label> <a href="./standard/report_agency/index.php">5. รายงานตามหน่วยงานคู่แข่ง</a></label><br><br>

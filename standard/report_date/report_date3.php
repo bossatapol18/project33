@@ -35,27 +35,15 @@ function datetodb($date)
                                 <div class="form-group">
                                     <label>จากวันที่</label>
                                     <input type="text" id="mydate4" name="from_date" value="<?php if (isset($_GET['from_date'])) {
-                                                                                                echo $_GET['from_date'];
-                                                                                            } ?>" class="form-control">
+                                     echo $_GET['from_date'];} ?>" class="form-control">
                                 </div>
                             </div>
-                            <!-- <div class="col-md-4">
-                                <label><input type="checkbox" id="check_1" value="1"> ชื่อมาตรฐาน</label><br>
-                                <label><input type="checkbox" id="check_2" value="2"> ประเภทผลิตภัณฑ์</label><br>
-                                <label><input type="checkbox" id="check_3" value="3"> กลุ่มผลิตภัณฑ์</label>
-                            </div>
-                            <div class="col-md-4">
-                                <label><input type="checkbox" id="check_4" value="4"> ศูนย์ที่เกี่ยวข้อง</label><br>
-                                <label><input type="checkbox" id="check_5" value="5"> แสดงวันที่/สถานะของเอกสาร</label><br>
-                                <label><input type="checkbox" id="check_6" value="6"> ไฟล์แนบ</label><br>
-                            </div> -->
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>ถึงวันที่</label>
                                     <input type="text" id="mydate5" name="to_date" value="<?php if (isset($_GET['to_date'])) {
-                                                                                                echo $_GET['to_date'];
-                                                                                            } ?>" class="form-control">
+                            echo $_GET['to_date'];} ?>" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -63,26 +51,6 @@ function datetodb($date)
                                     <button type="submit" class="btn btn-primary">ค้นหา</button>
                                 </div>
                             </div>
-
-                            <!-- <div class="col-md-6">
-            <input type="checkbox" onclick="hiddenn('1')" id="" name="">
-            <label for="">มาตรฐานเลขที่</label><br>
-            <input onclick="hiddenn('2')" type="checkbox" id="" name="" >
-            <label for=""> ประเภทผลิตภัณฑ์</label><br>
-            <input type="checkbox" id="" name="" >
-            <label for=""> กลุ่มผลิตภัณฑ์</label><br>
-
-        </div>
-        <div class="col-md-6">
-            <input type="checkbox" id="" name="" >
-            <label for="">ศูนย์ที่เกี่ยวข้อง</label><br>
-            <input type="checkbox" id="" name="" >
-            <label for=""> แสดงวันที่ของสถานะทั้งหมด</label><br>
-            <input type="checkbox" id="" name="" >
-            <label for=""> แสดงเอกสารแนบทั้งหมด</label><br><br>
-        </div>
-        <div class="col-md-4">
-        <button onclick="window.print()" class="btn btn-primary">พิมพ์รายงาน</button> -->
                             <br>
                             <div class="col-md-4">
                                 <a class="btn btn-dark" onclick="window.history.go(-1); return false;">ย้อนกลับ</a>
@@ -102,11 +70,7 @@ function datetodb($date)
                         <th class="">วันที่แต่งตั้งสถานะ</th>    
                         <th class="">ชื่อมาตรฐาน</th> 
                         <th class="">เลข มอก.</th>
-                        <!-- <th class="">ประเภทผลิตภัณฑ์</th>
-                        <th class="">กลุ่มผลิตภัณฑ์</th>
-                        <th class="">ชื่อหน่วยงานศูนย์</th> -->
                         <th class="">สถานะ</th>
-                        <!-- <th class="">ไฟล์แนบ</th> -->
                     </tr>
                         </thead>
                         <tbody>
@@ -120,11 +84,12 @@ function datetodb($date)
                                 $from_date = datetodb($_GET['from_date']);
                                 $to_date = datetodb($_GET['to_date']);
 
-                                $query = "SELECT  DISTINCT standard_create as cc ,standard_day as dd ,standard_detail as ee 
-                                ,standard_number as gg , main_std.standard_status,vv.id_statuss,vv.statuss_name AS vvv ,
+                                $query = "SELECT  DISTINCT standard_create as cc ,vv.status_date as dd ,standard_detail as ee 
+                                ,standard_number as gg , main_std.standard_idtb,eee.id_statuss,eee.statuss_name AS vvv ,
                                 COUNT(*) as standard_idtb  FROM main_std 
-                                INNER JOIN select_status vv ON main_std.standard_status = vv.id_statuss  WHERE standard_create BETWEEN '$from_date' AND '$to_date' 
-                                GROUP BY standard_detail,standard_create,standard_day,standard_number,standard_idtb ,standard_status,id_statuss,statuss_name
+                                INNER JOIN doc_status vv ON main_std.standard_idtb = vv.standard_idtb 
+								JOIN select_status eee ON vv.status_name = eee.id_statuss WHERE standard_create BETWEEN '$from_date' AND '$to_date' 
+                                GROUP BY standard_detail,standard_create,standard_number,status_name ,id_statuss,statuss_name,status_date,main_std.standard_idtb
                                ";
                                 $query_run = sqlsrv_query($conn, $query);
 
