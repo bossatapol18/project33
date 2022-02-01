@@ -96,38 +96,7 @@ $query3 = sqlsrv_query($conn, $sql3);
 
 
                 <!--ซ้าย-->
-                <div class="col-sm-6">
-                    <div class="card   mb-3" style="max-width:100%">
-                        <div class="card-header text-white bg-primary">กลุ่มผลิตภัณฑ์</div>
-                        <?php
-                        $standarsidtb = $_REQUEST['standard_idtb'];
-                        $sql = "SELECT * FROM dimension_group WHERE standard_idtb  = '$standarsidtb' ";
-                        $query1 = sqlsrv_query($conn, $sql);
-                        while ($result = sqlsrv_fetch_array($query1, SQLSRV_FETCH_ASSOC)) { ?>
-                        <?php $group =  $result['group_id']; ?>
-                        <select class="form-control" name="group_id[]" id="group_id" style="height: unset !important;"
-                            disabled>
-                            <option value="">กรุณาเลือกกลุ่มผลิตภัณฑ์</option>
-                            <?php
-                                $sql2 = "SELECT * FROM group_tb";
-                                $query2 = sqlsrv_query($conn, $sql2);
-                                while ($result2 = sqlsrv_fetch_array($query2, SQLSRV_FETCH_ASSOC)) {
-                                    $group2 =  $result2['group_id'];
-                                    if ($group == $group2) {
-                                        $c = "selected";
-                                    } else {
-                                        $c = "";
-                                    }
-                                ?>
-
-                            <option value="<?php echo $result2['group_id'];  ?>" <?php echo $c; ?>>
-                                <?php echo $result2['group_name']; ?></option>
-                            <?php } ?>
-                        </select>
-                        <?php } ?>
-
-                    </div>
-                </div>
+            
 
                 <div class="col-sm-6">
                     <div class="card   mb-3" style="max-width:100%">
@@ -161,7 +130,49 @@ $query3 = sqlsrv_query($conn, $sql3);
                     </div>
                 </div>
 
+                <div class="col-sm-6">
+                    <div class="card   mb-3" style="max-width:100%">
+                        <div class="card-header text-white bg-primary">กลุ่มผลิตภัณฑ์</div>
+                        <?php
+                        $standarsidtb = $_REQUEST['standard_idtb'];
+                        $sql = "SELECT * FROM dimension_group WHERE standard_idtb  = '$standarsidtb' ";
+                        $query1 = sqlsrv_query($conn, $sql);
+                        while ($result = sqlsrv_fetch_array($query1, SQLSRV_FETCH_ASSOC)) { ?>
+                        <?php $group =  $result['group_id']; ?>
+                        <select class="form-control" name="group_id[]" id="group_id" style="height: unset !important;"
+                            disabled>
+                            <option value="">กรุณาเลือกกลุ่มผลิตภัณฑ์</option>
+                            <?php
+                                $sql2 = "SELECT * FROM group_tb";
+                                $query2 = sqlsrv_query($conn, $sql2);
+                                while ($result2 = sqlsrv_fetch_array($query2, SQLSRV_FETCH_ASSOC)) {
+                                    $group2 =  $result2['group_id'];
+                                    if ($group == $group2) {
+                                        $c = "selected";
+                                    } else {
+                                        $c = "";
+                                    }
+                                ?>
 
+                            <option value="<?php echo $result2['group_id'];  ?>" <?php echo $c; ?>>
+                                <?php echo $result2['group_name']; ?></option>
+                            <?php } ?>
+                        </select>
+                        <?php } ?>
+
+                    </div>
+                </div>
+
+
+                
+                <div class="col-sm-6">
+                    <div class="card   mb-3" style="max-width:100%">
+                        <div class="card-header text-white bg-primary">สถานะล่าสุด</div>
+                        <div class="card-body">
+                            <p class="card-text"><?php echo $data2['name_status']; ?> </p>
+                        </div>
+                    </div>
+                </div>
 
                 <!--ซ้าย-->
                <div class="col-sm-6">
@@ -193,28 +204,10 @@ $query3 = sqlsrv_query($conn, $sql3);
                     </div>
                 </div>
 
-                <div class="col-sm-6">
-                    <div class="card   mb-3" style="max-width:100%">
-                        <div class="card-header text-white bg-primary">สถานะล่าสุด</div>
-                        <div class="card-body">
-                            <p class="card-text"><?php echo $data2['status_name']; ?> </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="card   mb-3" style="max-width:100%">
-                        <div class="card-header text-white bg-primary">หมายเหตุ</div>
-                        <div class="card-body">
-                            <?php 
-                              $sql_note = "SELECT * FROM main_std WHERE standard_idtb='$standard_idtb'";
-                              $query_note = sqlsrv_query($conn, $sql_note);
-                              $result_note = sqlsrv_fetch_array($query_note, SQLSRV_FETCH_ASSOC);
-                            ?>
-                            <p class="card-text"><?php echo $result_note['standard_note']; ?> </p>
-                        </div>
-                    </div>
-                </div>                                             
+               
+       
+                
+                        
 
 
                 <!-- หลายฟอร์ม -->
@@ -249,6 +242,20 @@ $query3 = sqlsrv_query($conn, $sql3);
                         <?php } ?>
                     </div>
                 </div>
+
+                <div class="col-sm-6">
+                    <div class="card   mb-3" style="max-width:100%">
+                        <div class="card-header text-white bg-primary">หมายเหตุ</div>
+                        <div class="card-body">
+                            <?php 
+                              $sql_note = "SELECT * FROM main_std WHERE standard_idtb='$standard_idtb'";
+                              $query_note = sqlsrv_query($conn, $sql_note);
+                              $result_note = sqlsrv_fetch_array($query_note, SQLSRV_FETCH_ASSOC);
+                            ?>
+                            <p class="card-text"><?php echo $result_note['standard_note']; ?> </p>
+                        </div>
+                    </div>
+                </div>   
 
 
                 <!-- หลายฟอร์ม -->
