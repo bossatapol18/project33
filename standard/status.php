@@ -101,7 +101,7 @@ if (isset($_POST) && !empty($_POST)) {
 // INNER JOIN select_status b ON a.standard_status = b.status_name
 // WHERE standard_detail  LIKE '%$strKeyword%' OR standard_status LIKE '%$strKeyword%'
 // OR standard_number  LIKE '%$strKeyword%' OR standard_note LIKE '%$strKeyword%'OR standard_day  LIKE ' %$strKeyword%' OR statuss_name LIKE '%$strKeyword%'");
-$sql = "SELECT * FROM main_std WHERE standard_detail  LIKE '%$strKeyword%'";
+$sql = "SELECT * FROM main_std WHERE standard_number  LIKE '%$strKeyword%'";
 $query = sqlsrv_query($conn, $sql);
 
 // $sql3 = "SELECT * FROM doc_status WHERE standard_idtb=" . $data['standard_idtb'];
@@ -153,15 +153,15 @@ $query2 = sqlsrv_query($conn, $sql2);
                         <tr>
                             <th class="col-1 text-center">ลำดับที่</th>
                             <th class="col-1 text-center">วันที่เพิ่มเอกสาร</th>
-                            <th class="col-2 text-center">วาระจากในที่ประชุมสมอ.</th>
+                            <th class="col-1 text-center">วาระจากในที่ประชุมสมอ.</th>
                             <th class="col-1 text-center">วันที่ประชุมสมอ.</th>
-                            <th class="col-1 text-center">เลขที่มอก.</th>
-                            <th class="col-1 text-center">ชื่อมาตรฐาน</th>
-                            <th class="col-2 text-center">วันที่แต่งตั้งสถานะ</th>
+                            <th class="col-2 text-center">เลขที่มอก.</th>
+                            <th class="col-3 text-center">ชื่อมาตรฐาน</th>
+                            <th class="col-1 text-center">วันที่แต่งตั้งสถานะ</th>
                             <!-- <th class="col-1">เลขที่เอกสาร</th> -->
                             <th class="col-2 text-center">สถานะ</th>
                             <th class="col-1 text-center">ไฟล์แนบ</th>
-                            <th class="col-2 text-center">เมนูจัดการ</th>
+                            <th class="col-1 text-center">เมนูจัดการ</th>
                         </tr>
                     </thead>
                     <tbody>

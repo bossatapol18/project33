@@ -83,7 +83,7 @@ header("Expires: 0");
                                     <?= $ii++ ?>.<?= $result2['name_agency']; ?><br>
                                 <?php } ?>
                             </td>
-                            <td class="align-middle"><?= $data['standard_mandatory'] ?></td>
+                            <td class="align-middle"><?= $data['manda_name'] ?></td>
                             <td>
                                 <?php
                                 $iii = 1;

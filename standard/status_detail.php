@@ -24,7 +24,7 @@ $query3 = sqlsrv_query($conn, $sql3);
 <section class="about section-bg">
     <form action="" method="post" enctype=multipart/form-data style="font-size:18px;" >
         <div class="container-sm">
-            <div class="col-lg-12">
+            <div class="col-lg-12 ">
                 <h5 align="left" class="text-success">สถานะของเอกสารปัจจุบัน : <?php echo $data2['name_status']; ?>
                 </h5>
                 <div class="section-title">
@@ -40,7 +40,7 @@ $query3 = sqlsrv_query($conn, $sql3);
                         <a class="btn btn-sm text-white" style="background-color:black; font-size:20px;"
                             onclick="window.history.go(-1); return false;">ย้อนกลับ</a>
                     </div>
-                    <h2 class="font-mirt">เอกสารทั้งหมด</h2>
+                    <h2 class="font-mirt mt-5">เอกสารทั้งหมด</h2>
                     <h4 class="font-mirt">หมายเลขเอกสาร : <?php echo $result['standard_idtb'] ?></h4>
                 </div>
             </div>
@@ -78,7 +78,7 @@ $query3 = sqlsrv_query($conn, $sql3);
                         <?php if($result['standard_source'] == '2') : ?>
                             <div class="card-header text-white bg-primary"><?php echo $result['name_source'] ; ?></div>
                         <div class="card-body">
-                            <p class="card-text">วันที่ <?php echo dateThai($result['standard_survey']); ?><br>วาระที่ <?php echo $result['standard_meet']; ?></p>
+                            <p class="card-text">วันที่ <?php echo dateThai($result['standard_survey']); ?><br> </p>
                         </div>
                         <?php endif ;?>
                     </div>

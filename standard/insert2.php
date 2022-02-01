@@ -39,7 +39,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                 <div class="">
                                     <div class="form-group mb-2">
                                         <input type="radio" name="standard_source" value="1">
-                                        <label>วาระจากการประชุม</label><br>
+                                        <label>วาระจากในที่ประชุม สมอ.</label><br>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                 <div class="">
                                     <div class="form-group mb-2">
                                         <input type="radio" name="standard_source" value="2">
-                                        <label>จดหมาย สมอ.</label><br>
+                                        <label>จดหมายสอบถามจาก สมอ.</label><br>
                                     </div>
                                 </div>
                             </div>
@@ -65,8 +65,8 @@ $date_today = (date('d/m/Y H:i:s'));
                         <div class="card-body">
                             <div class="">
                                 <div class="form-group mb-2">
-                                    <label for="">วาระจากที่ประชุม สมอ. </label>
-                                    <input type="text" name="standard_meet" class="form-control" required>
+                                    <label for="">วาระจากในที่ประชุม สมอ.</label> <!-- (กรอกเฉพาะวาระจากในที่ประชุม สมอ.)  -->
+                                    <input type="text" name="standard_meet" class="form-control" >
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@ $date_today = (date('d/m/Y H:i:s'));
                         <div class="card-body">
                             <div class="">
                                 <div class="form-group mb-2">
-                                    <lable>วันที่ประชุม สมอ.</lable>
+                                    <lable>วาระจากที่ประชุมสมอ. วันที่ / จดหมายสอบถามสมอ. วันที่</lable>
                                     <input type="text" id="date1" name="standard_survey" class="form-control" required>
                                 </div>
                             </div>
@@ -389,7 +389,7 @@ $date_today = (date('d/m/Y H:i:s'));
 
                 </div>
             </div>
-
+            </div>
             <div>
             <center>
                 <!--  -->
