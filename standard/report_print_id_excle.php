@@ -112,7 +112,7 @@ header("Expires: 0");
                                 $sql8 = "SELECT * FROM doc_status WHERE standard_idtb  = '$standarsidtb' ";
                                 $query8 = sqlsrv_query($conn, $sql8);
                                 while ($result8 = sqlsrv_fetch_array($query8, SQLSRV_FETCH_ASSOC)) { ?>
-                                    <?= $iii++ ?>.<?= $result8['status_date']; ?><br>
+                                    <?= $iii++ ?>.<?php echo datethai($result8['status_date']); ?><br>
                                 <?php } ?>
                             </td>
                             <td>
