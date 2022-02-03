@@ -45,23 +45,15 @@ header("Expires: 0");
                             <th rowspan="3" style="background-color: #3cb371;">หน่วยงานที่สามารถทดสอบได้</th>
                             <th rowspan="3" style="background-color: #3cb371;">ประเภทมาตรฐาน</th>
                             <th rowspan="3" style="background-color: #3cb371;">หน่วยงานที่ขอ</th>
-                            <?php for ($ii = 0; $ii < 12; $ii++ ) : ?>
-                            <th colspan="3" style="background-color: #ffd747;">ความก้าวหน้าของการขอรับการแต่งตั้ง<?php echo substr($ii, 28) ;?></th>
-                            <?php endfor ; ?>
+                            <th colspan="3" rowspan="2" style="background-color: #ffd747;">ความก้าวหน้าของการขอรับการแต่งตั้ง</th>
                         </tr>
                         <tr>
-                            <?php 
-                            $strMonthCut["month"] = ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"] ;
-                            for ($i = 0; $i < 12; $i++ ) : ?>
-                            <td colspan="3" style="text-align: center; background-color: #ffd747;"> เดือน : <?php echo $strMonthCut["month"][$i]  ;?></td> 
-                            <?php endfor; ?>
+                          
                         </tr>
                         <tr>
-                            <?php for ($i = 0; $i < 12; $i++ ) { ?>
                             <td style="text-align: center; background-color: #ffd747;">ระบุวันที่</td>
                             <td style="text-align: center; background-color: #ffd747;">สถานะ</td>
                             <td style="text-align: center; background-color: #ffd747;">เลขเอกสารที่เกี่ยวข้อง</td>
-                           <?php } ?>
                         </tr>
                     </thead>
                        
@@ -111,9 +103,12 @@ header("Expires: 0");
                                 $standarsidtb = $_REQUEST['standard_idtb'];
                                 $sql8 = "SELECT * FROM doc_status WHERE standard_idtb  = '$standarsidtb' ";
                                 $query8 = sqlsrv_query($conn, $sql8);
-                                while ($result8 = sqlsrv_fetch_array($query8, SQLSRV_FETCH_ASSOC)) { ?>
-                                    <?= $iii++ ?>.<?php echo datethai($result8['status_date']); ?><br>
-                                <?php } ?>
+                                while ($result8 = sqlsrv_fetch_array($query8, SQLSRV_FETCH_ASSOC)) {
+                                $d = $result8['status_date'];
+                                $e = explode("-", $d); 
+                                ?>
+                                    <?= $iii++ ?>.<?php echo datethai("วันที่ ".$e[2]." / เดือน ".$e[1]." / ปี ".$e[0]) ?><br>
+                                      <?php } ?>
                             </td>
                             <td>
                                 <?php
