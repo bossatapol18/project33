@@ -107,7 +107,7 @@ header("Expires: 0");
                                 $d = $result8['status_date'];
                                 $e = explode("-", $d); 
                                 ?>
-                                    <?= $iii++ ?>.<?php echo datethai("วันที่ ".$e[2]." / เดือน ".$e[1]." / ปี ".$e[0]) ?><br>
+                                <?php echo "วันที่".datethai($d)  ?><br>
                                       <?php } ?>
                             </td>
                             <td>
@@ -117,7 +117,7 @@ header("Expires: 0");
                                 $sql7 = "SELECT * ,a.status_name,b.id_statuss,b.statuss_name AS name_status FROM doc_status a JOIN select_status b  ON a.status_name = b.id_statuss WHERE standard_idtb  = '$standarsidtb' ";
                                 $query7 = sqlsrv_query($conn, $sql7);
                                 while ($result7 = sqlsrv_fetch_array($query7, SQLSRV_FETCH_ASSOC)) { ?>
-                                    <?= $iii++ ?>.<?= $result7['name_status']; ?><br>
+                                    <?= $result7['name_status']; ?><br>
                                 <?php } ?>
                             </td>
                             <td></td>
