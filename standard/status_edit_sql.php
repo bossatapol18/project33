@@ -46,7 +46,7 @@ if (isset($_POST) && !empty($_POST)) {
     //$standard_status = $_POST['standard_status'];
    // $standard_day = datetodb( $_POST['standard_day']);
 
-   echo $sql = "UPDATE main_std 
+    $sql = "UPDATE main_std 
         SET standard_number= '$standard_number' ,
             standard_meet = '$standard_meet' , 
             standard_detail = '$standard_detail' ,
@@ -108,7 +108,7 @@ $sql_status = "INSERT INTO doc_status ( status_name , status_date , standard_idt
                     $newname        = $date .  $numrand . $type; //ตั้งชื่อใหม่เรียงวันที่ ตัวเลขที่สุม และนามสกุลไฟล์
                     $path_copy      = $path . $newname; //กำหนดpath
                     //$path_link      = "/fileupload/" . $newname; //กำหนดlink
-                    echo $file_name;
+                    //echo $file_name;
                     // copy($fltem, $path_copy
                     copy($file_tmp_name, $path_copy); //คัดลอกไwล์
 
@@ -143,7 +143,7 @@ $sql_status = "INSERT INTO doc_status ( status_name , status_date , standard_idt
                     $newname        = $date .  $numrand . $type; //ตั้งชื่อใหม่เรียงวันที่ ตัวเลขที่สุม และนามสกุลไฟล์
                     $path_copy      = $path . $newname; //กำหนดpath
                     //$path_link      = "/fileupload/" . $newname; //กำหนดlink
-                    echo $file_name;
+                    //echo $file_name;
                     // copy($fltem, $path_copy
                     copy($file_tmp_name, $path_copy); //คัดลอกไwล์
 

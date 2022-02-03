@@ -107,7 +107,7 @@ header("Expires: 0");
                                 $d = $result8['status_date'];
                                 $e = explode("-", $d); 
                                 ?>
-                                <?php echo "วันที่".datethai($d)  ?><br>
+                                <?php echo "วันที่ ".datethai($d)  ?><br>
                                       <?php } ?>
                             </td>
                             <td>

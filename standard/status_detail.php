@@ -40,7 +40,7 @@ $query3 = sqlsrv_query($conn, $sql3);
                         <a class="btn btn-sm text-white" style="background-color:black; font-size:20px;"
                             onclick="window.history.go(-1); return false;">ย้อนกลับ</a>
                     </div>
-                    <h2 class="font-mirt">เอกสารทั้งหมด</h2>
+                    <h2 class="font-mirt mt-5">เอกสารทั้งหมด</h2>
                     <h4 class="font-mirt">หมายเลขเอกสาร : <?php echo $result['standard_idtb'] ?></h4>
                 </div>
             </div>

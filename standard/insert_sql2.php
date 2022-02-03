@@ -28,7 +28,7 @@ if ($mode == "insert_data") {
     $group_id = $_REQUEST["group_id"];
     $agency_id = $_REQUEST["agency_id"];
     //$type_id = $_REQUEST["type_id"];
-    $id_doc_status = $_REQUEST["id_doc_status"];
+   // $id_doc_status = $_REQUEST["id_doc_status"];
     $department_id = $_REQUEST["department_id"];
     $sql = "INSERT INTO main_std (standard_source, standard_mandatory , standard_meet  , standard_number , standard_detail , standard_note  ,standard_create, standard_survey ) 
       VALUES ('$standard_source', '$standard_mandatory','$standard_meet','$standard_number','$standard_detail','$standard_note' ,  '$date' ,'$standard_survey')";
