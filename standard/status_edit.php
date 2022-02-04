@@ -217,7 +217,7 @@ $date_today = (date('d/m/Y H:i:s'));
 
                             <!-- หลายฟอร์ม -->
                             
-                                    <div class="col-md-4 mt-4">
+                                    <div class="col-md-6 mt-4">
                                         <div class="card mt-8">
                                             <div class="card-body">
                                                 <div class="">
@@ -294,7 +294,7 @@ $date_today = (date('d/m/Y H:i:s'));
 
                             <!-- หลายฟอร์ม -->
                             
-                                    <div class="col-md-4 mt-4">
+                                    <div class="col-md-6 mt-4">
                                         <div class="card mt-8">
                                             <div class="card-body">
                                                 <div class="">
@@ -365,12 +365,12 @@ $date_today = (date('d/m/Y H:i:s'));
 
                             <!-- หลายฟอร์ม -->
                             
-                                    <div class="col-md-4 mt-4">
+                                    <div class="col-md-6 mt-4">
                                         <div class="card mt-8">
                                             <div class="card-body">
                                                 <div class="">
                                                     <div class="form-group mb-2">
-                                                        <label for="">หน่วยงานที่ขอ</label>
+                                                        <label for="">หน่วยงานหลัก</label>
                                                         <a href="javascript:void(0)" onclick="add_element('main15','sub_main15');" class=" float-end btn btn-success">เพิ่ม</a>
 
                                                         <?php
@@ -381,7 +381,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                                             <?php $department =  $result3['department_id']; ?>
                                                             <div class="input-group mt-3">
                                                                   <select class="form-control" name="department_id[]" id="department_id" style="height: unset !important;">
-                                                                <option value="">กรุณาเลือกหน่วยงานที่ขอ</option>
+                                                                <option value="">กรุณาเลือกหน่วยงานหลัก</option>
                                                                 <?php
                                                                 $sql33 = "SELECT * FROM department_tb";
                                                                 $query33 = sqlsrv_query($conn, $sql33);
@@ -409,7 +409,73 @@ $date_today = (date('d/m/Y H:i:s'));
                                                             <div style="display:none;">
                                                                 <div class=" mb-2 input-group mt-2" id="sub_main15">
                                                                     <select class="form-control" name="department_id[]" id="department_id" style="height: unset !important;">
-                                                                        <option selected disabled>กรุณาเลือกหน่วยงานที่ขอ
+                                                                        <option selected disabled>กรุณาเลือกหน่วยงานหลัก
+                                                                        </option>
+                                                                        <?php
+                                                                        $sql3 = "SELECT * FROM department_tb";
+                                                                        $query3 = sqlsrv_query($conn, $sql3);
+                                                                        while ($result = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
+                                                                            <option value="<?php echo $result['department_id'];  ?>">
+                                                                                <?php echo $result['department_name'];  ?></option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                    <input type="text" name="id_dimension_department[]" class="form-control" id="id_dimension_department">
+
+                                                                    <button type="button" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mt-4">
+                                        <div class="card mt-8">
+                                            <div class="card-body">
+                                                <div class="">
+                                                    <div class="form-group mb-2">
+                                                        <label for="">หน่วยงานรอง</label>
+                                                        <a href="javascript:void(0)" onclick="add_element('main15','sub_main15');" class=" float-end btn btn-success">เพิ่ม</a>
+
+                                                        <?php
+                                                        $standarsidtb = $_REQUEST['standard_idtb'];
+                                                        $sql3 = "SELECT * FROM dimension_department WHERE standard_idtb  = '$standarsidtb' ";
+                                                        $query3 = sqlsrv_query($conn, $sql3);
+                                                        while ($result3 = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
+                                                            <?php $department =  $result3['department_id']; ?>
+                                                            <div class="input-group mt-3">
+                                                                  <select class="form-control" name="department_id[]" id="department_id" style="height: unset !important;">
+                                                                <option value="">กรุณาเลือกหน่วยงานรอง</option>
+                                                                <?php
+                                                                $sql33 = "SELECT * FROM department_tb";
+                                                                $query33 = sqlsrv_query($conn, $sql33);
+                                                                while ($result33 = sqlsrv_fetch_array($query33, SQLSRV_FETCH_ASSOC)) {
+                                                                    $department2 =  $result33['department_id'];
+                                                                    if ($department == $department2) {
+                                                                        $c = "selected";
+                                                                    } else {
+                                                                        $c = "";
+                                                                    }
+                                                                ?>
+
+                                                                    <option value="<?php echo $result33['department_id'];  ?>" <?php echo $c; ?>><?php echo $result33['department_name']; ?>
+                                                                    </option>
+                                                                <?php } ?>
+                                                                <input style="display:none;" type="text" name="id_dimension_department[]" class="form-control" value="<?php echo $result3["id_dimension_department"] ?>">
+                                                            </select>
+                                                            <a href="standard/delete_id_dimension_department.php?id_dimension_department=<?php echo $result3["id_dimension_department"] ?>" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</a>
+                                                            </div>
+                                                          
+
+                                                        <?php } ?>
+                                                        <div class="main-form1 mt-3 " id="main15">
+
+                                                            <div style="display:none;">
+                                                                <div class=" mb-2 input-group mt-2" id="sub_main15">
+                                                                    <select class="form-control" name="department_id[]" id="department_id" style="height: unset !important;">
+                                                                        <option selected disabled>กรุณาเลือกหน่วยงานรอง
                                                                         </option>
                                                                         <?php
                                                                         $sql3 = "SELECT * FROM department_tb";

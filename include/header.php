@@ -18,7 +18,7 @@
          </li>
          <li><a href="?page=add_group">เพิ่มกลุ่มผลิตภัณฑ์</a></li>
          <li><a href="?page=add_agency">เพิ่มหน่วยงานคู่แข่ง</a></li>
-         <li><a href="?page=add_department">เพิ่มหน่วยงานที่ขอ</a></li>
+         <li><a href="?page=add_department">เพิ่มหน่วยงานหลัก</a></li>
        </ul>
        </li>
        <!-- <li><a class="nav-link scrollto" href="?page=contact">ติดต่อเรา</a></li> -->

@@ -13,7 +13,7 @@ $query = sqlsrv_query($conn, $sql);
         <div class="col-lg-12">
             <div class="section-title">
           <h2 class="font-mirt">เพิ่มข้อมูลพื้นฐาน</h2>
-          <h3 class="font-mirt">เพิ่มหน่วยงานที่ขอ</h3>
+          <h3 class="font-mirt">เพิ่มหน่วยงานหลัก</h3>
         </div>
             </div>
 
@@ -22,8 +22,8 @@ $query = sqlsrv_query($conn, $sql);
                 <table class="table table-bordered table-responsive-xl  pt-5" style="background-color: white;" id="tableall">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center">หมายเลขหน่วยงานนี่ขอ</th>
-                            <th scope="col" class="text-center">ชือหน่วยงานที่ขอ</th>
+                            <th scope="col" class="text-center">หมายเลขหน่วยงานหลัก</th>
+                            <th scope="col" class="text-center">ชือหน่วยงานหลัก</th>
                             <th scope="col" class="text-center">การจัดการ</th>
                         </tr>
                     </thead>

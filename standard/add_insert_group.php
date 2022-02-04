@@ -37,7 +37,7 @@ if (isset($_POST) && !empty($_POST)) {
                 <br>
                 <div class="">
                     <div>
-                        <label> หมายเลขกลุ่ม </label>
+                        <label> หมายเลขกลุ่มผลิตภัณฑ์ </label>
                         <input type="text" name="group_id" class="form-control" autocomplete="off">
                         <label> ชื่อกลุ่มผลิตภัณฑ์ </label>
                         <input type="text" name="group_name" class="form-control" autocomplete="off">

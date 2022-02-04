@@ -46,7 +46,7 @@ include '../../connection/connection.php' ;
 				</tbody>
 			</table>
 		</div>
-		<a class="btn btn-sm text-white" style="background-color:black; font-size:20px;"
+		<a class="btn btn-sm text-white" style="background-color:black; font-size:20px; color:white;"
                             onclick="window.history.go(-1); return false;">ย้อนกลับ</a>
 		<br />
 		<br />

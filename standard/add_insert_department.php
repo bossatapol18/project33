@@ -8,7 +8,7 @@ if (isset($_POST) && !empty($_POST)) {
     $params = array( $department_id,$department_name);
     if (sqlsrv_query($conn, $sql, $params)) {
         $alert = '<script type="text/javascript">';
-        $alert .= 'alert("เพิ่มหน่วยงานสำเร็จ !!");';
+        $alert .= 'alert("เพิ่มหน่วยงานหลักสำเร็จ !!");';
         $alert .= 'window.location.href = "?page=add_department";';
         $alert .= '</script>';
         echo $alert;
@@ -25,7 +25,7 @@ if (isset($_POST) && !empty($_POST)) {
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2 class="font-mirt">เพิ่มหน่วยงานที่ขอ</h2>
+                    <h2 class="font-mirt">เพิ่มหน่วยงานหลัก</h2>
                 </div>
             </div>
         <div class="container card-regis font">
@@ -35,9 +35,9 @@ if (isset($_POST) && !empty($_POST)) {
             <br>
             <div class="">
                 <div>
-                    <label>หมายเลขหน่วยงานที่ขอ</label>
+                    <label>หมายเลขหน่วยงานหลัก</label>
                     <input  type="text" name="department_id" class="form-control" autocomplete="off">
-                    <label >ชื่อหน่วยงานที่ขอ</label>
+                    <label >ชื่อหน่วยงานหลัก</label>
                     <input type="text" name="department_name" class="form-control" autocomplete="off">
                 </div>
             </div>

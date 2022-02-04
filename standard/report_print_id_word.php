@@ -49,7 +49,8 @@ require 'date.php';
                     <thead>
                         <tr>
                             <th style="background-color:#3cb371 ;" >หน่วยงานที่สามารถทดสอบได้</th>
-                            <th style="background-color:#3cb371 ;">หน่วยงานที่ขอ</th>
+                            <th style="background-color:#3cb371 ;">หน่วยงานหลัก</th>
+                            <th style="background-color:#3cb371 ;">หน่วยงานรอง</th>
                         </tr>
                         <tr>
                             <td style="text-align: center;">
@@ -74,6 +75,7 @@ require 'date.php';
                                             <?= $iii++ ?>. <?= $result3['name_department']; ?><br>
                                             <?php } ?>
                         </td>
+                        <td></td>
                        
                         </tr>
                     </thead>

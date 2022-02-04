@@ -100,7 +100,7 @@ $query3 = sqlsrv_query($conn, $sql3);
 
                 <div class="col-sm-6">
                     <div class="card   mb-3" style="max-width:100%">
-                        <div class="card-header text-white bg-primary">หน่วยงานที่ขอ</div>
+                        <div class="card-header text-white bg-primary">หน่วยงานหลัก</div>
                         <?php
                         $standarsidtb = $_REQUEST['standard_idtb'];
                         $sql3 = "SELECT * FROM dimension_department WHERE standard_idtb  = '$standarsidtb' ";
@@ -256,6 +256,38 @@ $query3 = sqlsrv_query($conn, $sql3);
                         </div>
                     </div>
                 </div>   
+
+                <div class="col-sm-6">
+                    <div class="card   mb-3" style="max-width:100%">
+                        <div class="card-header text-white bg-primary">หน่วยงานรอง</div>
+                        <?php
+                        $standarsidtb = $_REQUEST['standard_idtb'];
+                        $sql3 = "SELECT * FROM dimension_department WHERE standard_idtb  = '$standarsidtb' ";
+                        $query3 = sqlsrv_query($conn, $sql3);
+                        while ($result3 = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
+                        <?php $department =  $result3['department_id']; ?>
+                        <select class="form-control" name="department_id[]" id="department_id"
+                            style="height: unset !important;" disabled>
+                            <option value="">กรุณาเลือกหน่วยงานที่ขอ</option>
+                            <?php
+                                $sql33 = "SELECT * FROM department_tb";
+                                $query33 = sqlsrv_query($conn, $sql33);
+                                while ($result33 = sqlsrv_fetch_array($query33, SQLSRV_FETCH_ASSOC)) {
+                                    $department2 =  $result33['department_id'];
+                                    if ($department == $department2) {
+                                        $c = "selected";
+                                    } else {
+                                        $c = "";
+                                    }
+                                ?>
+
+                            <option value="<?php echo $result33['department_id'];  ?>" <?php echo $c; ?>>
+                                <?php echo $result33['department_name']; ?></option>
+                            <?php } ?>
+                        </select>
+                        <?php } ?>
+                    </div>
+                </div>
 
 
                 <!-- หลายฟอร์ม -->

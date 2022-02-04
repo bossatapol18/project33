@@ -44,7 +44,8 @@ header("Expires: 0");
                             <th rowspan="3" style="background-color: #3cb371;">ชื่อมาตรฐาน</th>
                             <th rowspan="3" style="background-color: #3cb371;">หน่วยงานที่สามารถทดสอบได้</th>
                             <th rowspan="3" style="background-color: #3cb371;">ประเภทมาตรฐาน</th>
-                            <th rowspan="3" style="background-color: #3cb371;">หน่วยงานที่ขอ</th>
+                            <th rowspan="3" style="background-color: #3cb371;">หน่วยงานหลัก</th>
+                            <th rowspan="3" style="background-color: #3cb371;">หน่วยงานรอง</th>
                             <th colspan="3" rowspan="2" style="background-color: #ffd747;">ความก้าวหน้าของการขอรับการแต่งตั้ง</th>
                         </tr>
                         <tr>
@@ -86,6 +87,7 @@ header("Expires: 0");
                                     <?= $ii++ ?>.<?= $result2['name_manda']; ?><br>
                                 <?php } ?>
                             </td>
+                            
                             <td>
                                 <?php
                                 $iii = 1;
@@ -97,6 +99,7 @@ header("Expires: 0");
                                     <?= $iii++ ?>.<?= $result3['name_department']; ?><br>
                                 <?php } ?>
                             </td>
+                            <td> </td>
                             <td>
                                 <?php
                                 $iii = 1;

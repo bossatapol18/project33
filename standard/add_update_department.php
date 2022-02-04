@@ -13,7 +13,7 @@ if (isset($_POST) && !empty($_POST)) {
 
     if (sqlsrv_query($conn, $sql, $params)) {
         $alert = '<script type="text/javascript">';
-        $alert .= 'alert("แก้ไขหน่วยงานที่ขอสำเร็จ !!");';
+        $alert .= 'alert("แก้ไขหน่วยงานหลักสำเร็จ !!");';
         $alert .= 'window.location.href = "?page=add_department";';
         $alert .= '</script>';
         echo $alert;
@@ -29,7 +29,7 @@ if (isset($_POST) && !empty($_POST)) {
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2 class="font-mirt">แก้ไขหน่วยงานที่ขอ</h2>
+                    <h2 class="font-mirt">แก้ไขหน่วยงานหลัก</h2>
                 </div>
             </div>
 
@@ -38,7 +38,7 @@ if (isset($_POST) && !empty($_POST)) {
         <div class="container  tab-content font">
             <div id="home" class="container-fluid tab-pane active m-2">
                 <div class="mb-3">
-                    <label class="form-label">ชื่อกลุ่ม</label>
+                    <label class="form-label">ชื่อหน่วยงานหลัก</label>
                     <input type="text" class="form-control" value="<?= $result['department_name'] ?>" name="department_name" placeholder="ชื่อกลุ่ม :" required autocomplete="off">
                 </div>
                 <button type="submit" class="btn btn-primary">บันทึก</button>

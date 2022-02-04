@@ -22,8 +22,8 @@ $query = sqlsrv_query($conn, $sql);
                 <table class="table table-bordered table-responsive-xl  pt-5" style="background-color: white;" id="tableall">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center">หมายเลขdกลุ่ม</th>
-                            <th scope="col" class="text-center">ชือกลุ่ม</th>
+                            <th scope="col" class="text-center">หมายเลขกลุ่มผลิตภัณฑ์</th>
+                            <th scope="col" class="text-center">ชือกลุ่มผลิตภัณฑ์</th>
                             <th scope="col" class="text-center">การจัดการ</th>
                         </tr>
                     </thead>
