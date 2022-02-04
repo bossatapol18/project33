@@ -400,11 +400,11 @@ $date_today = (date('d/m/Y H:i:s'));
                                     <select class="form-control" name="department1_id[]" id="department1_id" style="height: unset !important;">
                                         <option selected disabled>กรุณาเลือกหน่วยงานรอง</option>
                                         <?php
-                                        $sql4 = "SELECT * FROM department1_tb";
+                                        $sql4 = "SELECT * FROM department_tb";
                                         $query4 = sqlsrv_query($conn, $sql4);
                                         while ($result = sqlsrv_fetch_array($query4, SQLSRV_FETCH_ASSOC)) { ?>
-                                            <option value="<?php echo $result['department1_id'];  ?>">
-                                                <?php echo $result['department1_name'];  ?></option>
+                                            <option value="<?php echo $result['department_id'];  ?>">
+                                                <?php echo $result['department_name'];  ?></option>
                                         <?php } ?>
                                     </select>
                                     <div style="display: none;">
@@ -416,11 +416,11 @@ $date_today = (date('d/m/Y H:i:s'));
                                                         <option selected disabled>กรุณาเลือกหน่วยงานรอง
                                                         </option>
                                                         <?php
-                                                        $sql4 = "SELECT * FROM department1_tb";
+                                                        $sql4 = "SELECT * FROM department_tb";
                                                         $query4 = sqlsrv_query($conn, $sql4);
                                                         while ($result = sqlsrv_fetch_array($query4, SQLSRV_FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $result['department1_id'];  ?>">
-                                                                <?php echo $result['department1_name'];  ?></option>
+                                                            <option value="<?php echo $result['department_id'];  ?>">
+                                                                <?php echo $result['department_name'];  ?></option>
                                                         <?php } ?>
                                                     </select>
                                                     <button type="button" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</button>

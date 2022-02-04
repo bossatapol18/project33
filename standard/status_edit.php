@@ -456,10 +456,10 @@ $date_today = (date('d/m/Y H:i:s'));
                                                                   <select class="form-control" name="department1_id[]" id="department1_id" style="height: unset !important;">
                                                                 <option value="">กรุณาเลือกหน่วยงานรอง</option>
                                                                 <?php
-                                                                $sql43 = "SELECT * FROM department1_tb";
+                                                                $sql43 = "SELECT * FROM department_tb";
                                                                 $query433 = sqlsrv_query($conn, $sql43);
                                                                 while ($result433 = sqlsrv_fetch_array($query433, SQLSRV_FETCH_ASSOC)) {
-                                                                    $department4 =  $result433['department1_id'];
+                                                                    $department4 =  $result433['department_id'];
                                                                     if ($department == $department4) {
                                                                         $c = "selected";
                                                                     } else {
@@ -467,7 +467,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                                                     }
                                                                 ?>
 
-                                                                    <option value="<?php echo $result433['department1_id'];  ?>" <?php echo $c; ?>><?php echo $result433['department1_name']; ?>
+                                                                    <option value="<?php echo $result433['department_id'];  ?>" <?php echo $c; ?>><?php echo $result433['department_name']; ?>
                                                                     </option>
                                                                 <?php } ?>
                                                                 <input style="display:none;" type="text" name="id_dimension_department1[]" class="form-control" value="<?php echo $result43["id_dimension_department1"] ?>">
@@ -485,11 +485,11 @@ $date_today = (date('d/m/Y H:i:s'));
                                                                         <option selected disabled>กรุณาเลือกหน่วยงานรอง
                                                                         </option>
                                                                         <?php
-                                                                        $sql4 = "SELECT * FROM department1_tb";
+                                                                        $sql4 = "SELECT * FROM department_tb";
                                                                         $query43 = sqlsrv_query($conn, $sql4);
                                                                         while ($result = sqlsrv_fetch_array($query43, SQLSRV_FETCH_ASSOC)) { ?>
-                                                                            <option value="<?php echo $result['department1_id'];  ?>">
-                                                                                <?php echo $result['department1_name'];  ?></option>
+                                                                            <option value="<?php echo $result['department_id'];  ?>">
+                                                                                <?php echo $result['department_name'];  ?></option>
                                                                         <?php } ?>
                                                                     </select>
                                                                     <input type="text" name="id_dimension_department1[]" class="form-control" id="id_dimension_department1">

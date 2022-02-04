@@ -270,10 +270,10 @@ $query3 = sqlsrv_query($conn, $sql3);
                             style="height: unset !important;" disabled>
                             <option value="">กรุณาเลือกหน่วยงานรอง</option>
                             <?php
-                                $sql55 = "SELECT * FROM department1_tb";
+                                $sql55 = "SELECT * FROM department_tb";
                                 $query55 = sqlsrv_query($conn, $sql55);
                                 while ($result55 = sqlsrv_fetch_array($query55, SQLSRV_FETCH_ASSOC)) {
-                                    $department5 =  $result55['department1_id'];
+                                    $department5 =  $result55['department_id'];
                                     if ($department == $department5) {
                                         $c = "selected";
                                     } else {
@@ -281,8 +281,8 @@ $query3 = sqlsrv_query($conn, $sql3);
                                     }
                                 ?>
 
-                            <option value="<?php echo $result55['department1_id'];  ?>" <?php echo $c; ?>>
-                                <?php echo $result55['department1_name']; ?></option>
+                            <option value="<?php echo $result55['department_id'];  ?>" <?php echo $c; ?>>
+                                <?php echo $result55['department_name']; ?></option>
                             <?php } ?>
                         </select>
                         <?php } ?>
