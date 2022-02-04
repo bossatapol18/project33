@@ -206,6 +206,27 @@ $sql_status = "INSERT INTO doc_status ( status_name , status_date , standard_idt
         }
     }
 
+       //หน่วยงานรอง
+       $count_department1 = count($_REQUEST['id_dimension_department1']);
+
+       $count_department1_id = count($_REQUEST['department1_id']);
+   
+       for ($i = 0; $i < $count_department1; $i++) {
+           $id_dimension_department1 = $_REQUEST['id_dimension_department1'][$i];
+           $department1_id = $_REQUEST['department1_id'][$i];
+           if ($id_dimension_department1 != '' && $department1_id != '') {
+               $sql_update_department1 = " UPDATE dimension_department1 SET department1_id = '$department1_id' WHERE id_dimension_department1 = '$id_dimension_department1'";
+               $show_department1 = sqlsrv_query($conn, $sql_update_department1);
+           }
+           if ($id_dimension_department1 == '' && $department1_id != '') {
+               $sql_insert_department1 = "INSERT INTO dimension_department1 (standard_idtb,department1_id) VALUES (?,?);";
+               $value_department1 = array($standard_idtb, $department1_id);
+               $insert_department1 = sqlsrv_query($conn, $sql_insert_department1, $value_department1);
+           }
+       }
+    //    print_r($_POST);
+    //    exit;
+
     //ประเภทผลิตภัณฑ์
     // $count_type = count($_REQUEST['id_dimension_type']);
 

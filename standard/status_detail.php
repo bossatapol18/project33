@@ -262,27 +262,27 @@ $query3 = sqlsrv_query($conn, $sql3);
                         <div class="card-header text-white bg-primary">หน่วยงานรอง</div>
                         <?php
                         $standarsidtb = $_REQUEST['standard_idtb'];
-                        $sql3 = "SELECT * FROM dimension_department WHERE standard_idtb  = '$standarsidtb' ";
-                        $query3 = sqlsrv_query($conn, $sql3);
-                        while ($result3 = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
-                        <?php $department =  $result3['department_id']; ?>
-                        <select class="form-control" name="department_id[]" id="department_id"
+                        $sql5 = "SELECT * FROM dimension_department1 WHERE standard_idtb  = '$standarsidtb' ";
+                        $query5 = sqlsrv_query($conn, $sql5);
+                        while ($result5 = sqlsrv_fetch_array($query5, SQLSRV_FETCH_ASSOC)) { ?>
+                        <?php $department =  $result5['department1_id']; ?>
+                        <select class="form-control" name="department1_id[]" id="department1_id"
                             style="height: unset !important;" disabled>
-                            <option value="">กรุณาเลือกหน่วยงานที่ขอ</option>
+                            <option value="">กรุณาเลือกหน่วยงานรอง</option>
                             <?php
-                                $sql33 = "SELECT * FROM department_tb";
-                                $query33 = sqlsrv_query($conn, $sql33);
-                                while ($result33 = sqlsrv_fetch_array($query33, SQLSRV_FETCH_ASSOC)) {
-                                    $department2 =  $result33['department_id'];
-                                    if ($department == $department2) {
+                                $sql55 = "SELECT * FROM department1_tb";
+                                $query55 = sqlsrv_query($conn, $sql55);
+                                while ($result55 = sqlsrv_fetch_array($query55, SQLSRV_FETCH_ASSOC)) {
+                                    $department5 =  $result55['department1_id'];
+                                    if ($department == $department5) {
                                         $c = "selected";
                                     } else {
                                         $c = "";
                                     }
                                 ?>
 
-                            <option value="<?php echo $result33['department_id'];  ?>" <?php echo $c; ?>>
-                                <?php echo $result33['department_name']; ?></option>
+                            <option value="<?php echo $result55['department1_id'];  ?>" <?php echo $c; ?>>
+                                <?php echo $result55['department1_name']; ?></option>
                             <?php } ?>
                         </select>
                         <?php } ?>

@@ -72,10 +72,20 @@ require 'date.php';
                                             WHERE standard_idtb  = '$standarsidtb' ";
                                             $query3 = sqlsrv_query($conn, $sql3);
                                             while ($result3 = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
-                                            <?= $iii++ ?>. <?= $result3['name_department']; ?><br>
+                                            <?= $result3['name_department']; ?><br>
                                             <?php } ?>
                         </td>
-                        <td></td>
+                        <td style="text-align: center; ">
+                         <?php
+                                            $iii = 1;
+                                            $standarsidtb = $_REQUEST['standard_idtb'];
+                                            $sql10 = "SELECT * ,b.department1_id,c.department1_id,c.department1_name AS name_department1 FROM dimension_department1 b INNER JOIN department1_tb c ON b.department1_id = c.department1_id 
+                                            WHERE standard_idtb  = '$standarsidtb' ";
+                                            $query10 = sqlsrv_query($conn, $sql10);
+                                            while ($result10 = sqlsrv_fetch_array($query10, SQLSRV_FETCH_ASSOC)) { ?>
+                                            <?= $iii++ ?>. <?= $result10['name_department1']; ?><br>
+                                            <?php } ?>
+                        </td>
                        
                         </tr>
                     </thead>

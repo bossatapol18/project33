@@ -220,7 +220,7 @@
                             WHERE standard_idtb  = '$standarsidtb' ";
                                 $query3 = sqlsrv_query($conn, $sql3);
                                 while ($result3 = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
-                                    <?= $ii++ ?>.<?= $result3['name_department']; ?><br>
+                                   <?= $result3['name_department']; ?><br>
                                 <?php } ?>
                             </td>
                             <!-- <td>
@@ -234,7 +234,19 @@
                                     <?= $iii++ ?>. <?= $result4['name_type']; ?><br>
                                 <?php } ?>
                             </td> -->
-                            <td></td>
+                            <!-- รอง -->
+                            <td>
+                                <?php
+                                $ii = 1;
+                                $standarsidtb = $_REQUEST['standard_idtb'];
+                                $sql6 = "SELECT * ,b.department1_id,c.department1_id,c.department1_name AS name_department1 FROM dimension_department1 b INNER JOIN department1_tb c ON b.department1_id = c.department1_id 
+                            WHERE standard_idtb  = '$standarsidtb' ";
+                                $query6 = sqlsrv_query($conn, $sql6);
+                                while ($result6 = sqlsrv_fetch_array($query6, SQLSRV_FETCH_ASSOC)) { ?>
+                                    <?= $ii++ ?>.<?= $result6['name_department1']; ?><br>
+                                <?php } ?>
+                            </td>
+                            <!-- รอง -->
                             <td>
                                 <?php
                                 $iiii = 1;

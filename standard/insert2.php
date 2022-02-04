@@ -347,7 +347,7 @@ $date_today = (date('d/m/Y H:i:s'));
                         <div class="card-body">
                             <div class="">
                                 <label for="">หน่วยงานหลัก</label>
-                                <a href="javascript:void(0)" onclick="add_element('main3','sub_main3');" class="float-end btn btn-success">เพิ่ม</a>
+                                <!-- <a href="javascript:void(0)" onclick="add_element('main3','sub_main3');" class="float-end btn btn-success">เพิ่ม</a> -->
                                 <div class="main-form2 mt-3 border-bottom" id="main3">
                                     <select class="form-control" name="department_id[]" id="department_id" style="height: unset !important;">
                                         <option selected disabled>กรุณาเลือกหน่วยงานหลัก</option>
@@ -395,32 +395,32 @@ $date_today = (date('d/m/Y H:i:s'));
                         <div class="card-body">
                             <div class="">
                                 <label for="">หน่วยงานรอง</label>
-                                <a href="javascript:void(0)" onclick="add_element('main33','sub_main33');" class="float-end btn btn-success">เพิ่ม</a>
-                                <div class="main-form2 mt-3 border-bottom" id="main33">
-                                    <select class="form-control" name="department_id[]" id="department_id" style="height: unset !important;">
-                                        <option selected disabled>กรุณาเลือกหน่วยงานหลัก</option>
+                                <a href="javascript:void(0)" onclick="add_element('main10','sub_main10');" class="float-end btn btn-success">เพิ่ม</a>
+                                <div class="main-form2 mt-3 border-bottom" id="main10">
+                                    <select class="form-control" name="department1_id[]" id="department1_id" style="height: unset !important;">
+                                        <option selected disabled>กรุณาเลือกหน่วยงานรอง</option>
                                         <?php
-                                        $sql3 = "SELECT * FROM department_tb";
-                                        $query3 = sqlsrv_query($conn, $sql3);
-                                        while ($result = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
-                                            <option value="<?php echo $result['department_id'];  ?>">
-                                                <?php echo $result['department_name'];  ?></option>
+                                        $sql4 = "SELECT * FROM department1_tb";
+                                        $query4 = sqlsrv_query($conn, $sql4);
+                                        while ($result = sqlsrv_fetch_array($query4, SQLSRV_FETCH_ASSOC)) { ?>
+                                            <option value="<?php echo $result['department1_id'];  ?>">
+                                                <?php echo $result['department1_name'];  ?></option>
                                         <?php } ?>
                                     </select>
                                     <div style="display: none;">
-                                        <div class="row" id="sub_main33">
+                                        <div class="row" id="sub_main10">
                                             <div class="">
                                                 <div class="form-group mb-2 input-group mt-2">
 
-                                                    <select class="form-control" name="department_id[]" id="department_id" style="height: unset !important;">
-                                                        <option selected disabled>กรุณาเลือกหน่วยงานหลัก
+                                                    <select class="form-control" name="department1_id[]" id="department1_id" style="height: unset !important;">
+                                                        <option selected disabled>กรุณาเลือกหน่วยงานรอง
                                                         </option>
                                                         <?php
-                                                        $sql3 = "SELECT * FROM department_tb";
-                                                        $query3 = sqlsrv_query($conn, $sql3);
-                                                        while ($result = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $result['department_id'];  ?>">
-                                                                <?php echo $result['department_name'];  ?></option>
+                                                        $sql4 = "SELECT * FROM department1_tb";
+                                                        $query4 = sqlsrv_query($conn, $sql4);
+                                                        while ($result = sqlsrv_fetch_array($query4, SQLSRV_FETCH_ASSOC)) { ?>
+                                                            <option value="<?php echo $result['department1_id'];  ?>">
+                                                                <?php echo $result['department1_name'];  ?></option>
                                                         <?php } ?>
                                                     </select>
                                                     <button type="button" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</button>

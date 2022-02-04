@@ -30,6 +30,7 @@ if ($mode == "insert_data") {
     //$type_id = $_REQUEST["type_id"];
    // $id_doc_status = $_REQUEST["id_doc_status"];
     $department_id = $_REQUEST["department_id"];
+    $department1_id = $_REQUEST["department1_id"];
     $sql = "INSERT INTO main_std (standard_source, standard_mandatory , standard_meet  , standard_number , standard_detail , standard_note  ,standard_create, standard_survey ) 
       VALUES ('$standard_source', '$standard_mandatory','$standard_meet','$standard_number','$standard_detail','$standard_note' ,  '$date' ,'$standard_survey')";
 
@@ -111,6 +112,20 @@ if ($mode == "insert_data") {
             $sql4 = "INSERT INTO dimension_department ( department_id , standard_idtb  ) 
       VALUES ('$departmentid', '$standard_idtb')";
             $stmt4 = sqlsrv_query($conn, $sql4);
+        }
+    }
+
+    $countboxdepartment1 = count($department1_id);
+    //echo $test;
+    for ($i = 0; $i < $countboxdepartment1; $i++) {
+        $department1id =  $department1_id[$i];
+
+        //echo "<br>";
+        if (trim($department1id) <> "") {
+
+            $sql11 = "INSERT INTO dimension_department1 ( department1_id , standard_idtb  ) 
+      VALUES ('$department1id', '$standard_idtb')";
+            $stmt11 = sqlsrv_query($conn, $sql11);
         }
     }
 
