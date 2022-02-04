@@ -399,7 +399,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                                                 <?php } ?>
                                                                 <input style="display:none;" type="text" name="id_dimension_department[]" class="form-control" value="<?php echo $result3["id_dimension_department"] ?>">
                                                             </select>
-                                                            <a href="standard/delete_id_dimension_department.php?id_dimension_department=<?php echo $result3["id_dimension_department"] ?>" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</a>
+                                                            <!-- <a href="standard/delete_id_dimension_department.php?id_dimension_department=<?php echo $result3["id_dimension_department"] ?>" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</a> -->
                                                             </div>
                                                           
 
