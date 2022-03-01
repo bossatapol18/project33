@@ -48,7 +48,7 @@ require 'date.php';
         <table class="table table-bordered " style="width: 100%;" border="">
                     <thead>
                         <tr>
-                            <th style="background-color:#3cb371 ;" >หน่วยงานที่สามารถทดสอบได้</th>
+                            <th style="background-color:#3cb371 ;" >หน่วยงานอื่นที่คาดว่าจะทดสอบได้</th>
                             <th style="background-color:#3cb371 ;">หน่วยงานหลัก</th>
                             <th style="background-color:#3cb371 ;">หน่วยงานรอง</th>
                         </tr>

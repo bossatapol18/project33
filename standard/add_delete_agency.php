@@ -6,7 +6,7 @@ if (isset($_GET['agency_id']) && !empty($_GET['agency_id'])) {
     if (sqlsrv_query($conn, $sql, $params)) {
         // echo "ลบข้อมูลสำเร็จ";
         $alert = '<script type="text/javascript">';
-        $alert .= 'alert("ลบหน่วยงานสำเร็จ !!");';
+        $alert .= 'alert("ลบหน่วยงานอื่นที่คาดว่าจะทดสอบได้สำเร็จ !!");';
         $alert .= 'window.location.href = "?page=add_agency";';
         $alert .= '</script>';
         echo $alert;

@@ -303,7 +303,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                         <div class="card-body">
                                             <div class="">
                                                 <div class="form-group mb-2">
-                                                    <label for="">หน่วยงานคู่แข่ง</label>
+                                                    <label for="">หน่วยงานอื่นที่คาดว่าจะทดสอบได้</label>
                                                     <a href="javascript:void(0)" onclick="add_element('main10','sub_main10');" class=" float-end btn btn-success">เพิ่ม</a>
                                                     <?php
                                                     $standarsidtb = $_REQUEST['standard_idtb'];
@@ -314,7 +314,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                                         <div class="input-group mt-3">
                                                             <select class="form-control" name="agency_id[]" id="agency_id" style="height: unset !important;">
 
-                                                                <option value="">กรุณาเลือกหน่วยงานคู่แข่ง</option>
+                                                                <option value="">กรุณาเลือกหน่วยงานอื่นที่คาดว่าจะทดสอบได้</option>
                                                                 <?php
                                                                 $sql22 = "SELECT * FROM agency_tb";
                                                                 $query22 = sqlsrv_query($conn, $sql22);
@@ -343,7 +343,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                                             <div class=" mb-2 input-group mt-2" id="sub_main10">
                                                                 <select class="form-control" name="agency_id[]" id="agency_id" style="height: unset !important;">
                                                                     <option selected disabled>
-                                                                        กรุณาเลือกหน่วยงานคู่แข่ง</option>
+                                                                        กรุณาเลือกหน่วยงานอื่นที่คาดว่าจะทดสอบได้</option>
                                                                     <?php
                                                                     $sql2 = "SELECT * FROM agency_tb";
                                                                     $query2 = sqlsrv_query($conn, $sql2);

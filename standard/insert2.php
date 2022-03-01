@@ -250,12 +250,12 @@ $date_today = (date('d/m/Y H:i:s'));
                     <div class="card mt-4">
                         <div class="card-body">
                             <div class="">
-                                <label for="">หน่วยงานคู่แข่ง</label>
+                                <label for="">หน่วยงานอื่นที่คาดว่าจะทดสอบได้</label>
                                 <a href="javascript:void(0)" onclick="add_element('main1','sub_main1');" class=" float-end btn btn-success">เพิ่ม</a>
                                 <div class="main-form1 mt-3 " id="main1">
                                     <select class="form-control chosen" name="agency_id[]" id="agency_id" style="height: unset !important;">
                                         <option selected disabled>
-                                            กรุณาเลือกหน่วยงานคู่แข่ง</option>
+                                            กรุณาเลือกหน่วยงานอื่นที่คาดว่าจะทดสอบได้</option>
                                         <?php
                                         $sql2 = "SELECT * FROM agency_tb";
                                         $query2 = sqlsrv_query($conn, $sql2);
@@ -271,7 +271,7 @@ $date_today = (date('d/m/Y H:i:s'));
 
                                                     <select class="form-control chosen" name="agency_id[]" id="agency_id" style="height: unset !important;">
                                                         <option selected disabled>
-                                                            กรุณาเลือกหน่วยงานคู่แข่ง</option>
+                                                            กรุณาเลือกหน่วยงานอื่นที่คาดว่าจะทดสอบได้</option>
                                                         <?php
                                                         $sql2 = "SELECT * FROM agency_tb";
                                                         $query2 = sqlsrv_query($conn, $sql2);

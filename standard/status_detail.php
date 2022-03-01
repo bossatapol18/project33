@@ -211,7 +211,7 @@ $query3 = sqlsrv_query($conn, $sql3);
                 <!-- หลายฟอร์ม -->
                 <div class="col-sm-6">
                     <div class="card   mb-3" style="max-width:100%">
-                        <div class="card-header text-white bg-primary">หน่วยงานคู่แข่ง</div>
+                        <div class="card-header text-white bg-primary">หน่วยงานอื่นที่คาดว่าจะทดสอบได้</div>
                         <?php
                         $standarsidtb = $_REQUEST['standard_idtb'];
                         $sql2 = "SELECT * FROM dimension_agency WHERE standard_idtb  = '$standarsidtb' ";
@@ -289,7 +289,7 @@ $query3 = sqlsrv_query($conn, $sql3);
 
 
                 <!-- หลายฟอร์ม -->
-                <div class="col-sm-6">
+                <!-- <div class="col-sm-6">
                     <div class="card   mb-3" style="max-width:100%">
                         <div class="card-header text-white bg-primary">ผู้บันทึกข้อมูล</div>
                         <div class="card-body">
@@ -297,7 +297,7 @@ $query3 = sqlsrv_query($conn, $sql3);
                          
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                            
 

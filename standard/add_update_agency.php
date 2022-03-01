@@ -13,7 +13,7 @@ if (isset($_POST) && !empty($_POST)) {
 
     if (sqlsrv_query($conn, $sql, $params)) {
         $alert = '<script type="text/javascript">';
-        $alert .= 'alert("แก้ไขข้อมูลหน่วยงานสำเร็จ !!");';
+        $alert .= 'alert("แก้ไขข้อมูลหน่วยงานอื่นที่คาดว่าจะทดสอบได้อื่นที่คาดว่าจะทดสอบได้สำเร็จ !!");';
         $alert .= 'window.location.href = "?page=add_agency";';
         $alert .= '</script>';
         echo $alert;
@@ -29,7 +29,7 @@ if (isset($_POST) && !empty($_POST)) {
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2 class="font-mirt">แก้ไขข้อมูลหน่วยงาน</h2>
+                    <h2 class="font-mirt">แก้ไขข้อมูลหน่วยงานอื่นที่คาดว่าจะทดสอบได้</h2>
                 </div>
             </div>
 
@@ -38,8 +38,8 @@ if (isset($_POST) && !empty($_POST)) {
         <div class="container  tab-content font">
             <div id="home" class="container-fluid tab-pane active m-2">
                 <div class="mb-3">
-                    <label class="form-label">ชื่อหน่วยงาน</label>
-                    <input type="text" class="form-control" value="<?= $result['agency_name'] ?>" name="agency_name" placeholder="ชื่อหน่วยงาน :" required autocomplete="off">
+                    <label class="form-label">ชื่อหน่วยงานอื่นที่คาดว่าจะทดสอบได้</label>
+                    <input type="text" class="form-control" value="<?= $result['agency_name'] ?>" name="agency_name" placeholder="ชื่อหน่วยงานอื่นที่คาดว่าจะทดสอบได้ :" required autocomplete="off">
                 </div>
                 <button type="submit" class="btn btn-primary">บันทึก</button>
     </form>

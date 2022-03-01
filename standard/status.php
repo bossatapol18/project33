@@ -139,7 +139,7 @@ $query2 = sqlsrv_query($conn, $sql2);
             <div id="home" class="container-fluid tab-pane active m-2">
                 <div align="right">
                     <a href="?page=insert2" class="btn bt mg-t-bt b-add text-white mg-r" style="background:#4CAF50;">
-                        <h5 class="font-mirt">เพิ่มเอกสาร</h5>
+                        <h5 class="font-mirt">+ เพิ่มเอกสารใหม่</h5>
                     </a>
                 </div>
                 <hr>
@@ -155,14 +155,14 @@ $query2 = sqlsrv_query($conn, $sql2);
                             <th class="col-1 text-center">วันที่เพิ่มเอกสาร</th>
                             <th class="col-1 text-center">ที่มา</th>
                             <th class="col-1 text-center">วาระจากที่ประชุมสมอ.</th>
-                            <th class="col-1 text-center">วันที่ประชุมสมอ.</th>
+                            <th class="col-2 text-center">วาระจากที่ประชุมสมอ./จดหมายสอบถามจากสมอ. วันที่</th>
                             <th class="col-2 text-center">เลขที่มอก.</th>
-                            <th class="col-3 text-center">ชื่อมาตรฐาน</th>
-                            <th class="col-1 text-center">วันที่แต่งตั้งสถานะ</th>
+                            <th class="col-2 text-center">ชื่อมาตรฐาน</th>
+                            <th class="col-1 text-center">วันที่เปลี่ยนแปลงสถานะ</th>
                             <!-- <th class="col-1">เลขที่เอกสาร</th> -->
                             <th class="col-2 text-center">สถานะ</th>
-                            <th class="col-1 text-center">ไฟล์แนบ</th>
-                            <th class="col-1 text-center">เมนูจัดการ</th>
+                            <th class="col-1 text-center"></th>
+                            <th class="col-1 text-center"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -224,7 +224,7 @@ $query2 = sqlsrv_query($conn, $sql2);
                                 <?= $data['name_status'] ?></td>
                             <?php endif; ?> -->
                                 <td class="align-middle">
-                                    <a href="standard_idtb=<?= $data['standard_idtb'] ?>" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo $data['standard_idtb']; ?>" tyle="background-color:#31f9cb;">เรียกดูไฟล์</a>
+                                    <a href="standard_idtb=<?= $data['standard_idtb'] ?>" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo $data['standard_idtb']; ?>" tyle="background-color:#31f9cb;">ไฟล์แนบ</a>
                                     <?php require('modalstatus.php'); ?>
                                 </td>
                                 <td class="align-middle">
@@ -234,7 +234,7 @@ $query2 = sqlsrv_query($conn, $sql2);
                                             <!-- <a href="?page=<? //= $_GET['page'] 
                                                                 ?>&function=update&standard_idtb=<? //= $data['standard_idtb'] 
                                                                                                                         ?>" class="btn btn-sm btn-warning">แก้ไขข้อมูลสถานะ</a> -->
-                                            <a href="?page=detail&standard_idtb=<?= $data['standard_idtb'] ?>" class="btn btn-sm font-mirt" style="background-color:#31f9cb;">ดูรายละเอียด</a>
+                                            <a href="?page=detail&standard_idtb=<?= $data['standard_idtb'] ?>" class="btn btn-sm font-mirt" style="background-color:#31f9cb;">แก้ไข</a>
                                             <!-- <a href="?page=<? //= $_GET['page'] 
                                                                 ?>&function=reportprint&standard_idtb=<? //= $data['standard_idtb'] 
                                                                                                                             ?>" onclick="return confirm('คุณต้องการพิมพ์เอกสารนี้ : <? //= $data['standard_number'] 

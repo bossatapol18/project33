@@ -22,7 +22,7 @@
                                             <label> <a href="./report_list/index.php">2. รายงานรายชื่อศูนย์</a></label><br><br>
                                             <label> <a href="./report_date/report_date3.php">3. รายงานตามช่วงเวลา</a></label><br><br>
                                             <label> <a href="./report_number/index.php">4. รายงานตามเลข มอก.</a></label><br><br>
-                                            <label> <a href="./report_agency/index.php">5. รายงานตามหน่วยงานคู่แข่ง</a></label><br><br>
+                                            <label> <a href="./report_agency/index.php">5. รายงานตามหน่วยงานอื่นที่คาดว่าจะทดสอบได้</a></label><br><br>
                                        
                                             <br>
                                         </div>

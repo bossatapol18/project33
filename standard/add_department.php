@@ -19,6 +19,7 @@ $query = sqlsrv_query($conn, $sql);
 
         <div class="container  tab-content font">
             <div id="home" class="container-fluid tab-pane active m-2">
+            <a href="?page=add_insert_department" class="btn btn-success mb-4">เพิ่มข้อมูล</a>
                 <table class="table table-bordered table-responsive-xl  pt-5" style="background-color: white;" id="tableall">
                     <thead>
                         <tr>

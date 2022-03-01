@@ -42,7 +42,7 @@ header("Expires: 0");
                             <th rowspan="3" style="background-color: #3cb371;">วาระจากในที่ประชุมสมอ.</th>
                             <th rowspan="3" style="background-color: #3cb371;">เลขที่มอก.</th>
                             <th rowspan="3" style="background-color: #3cb371;">ชื่อมาตรฐาน</th>
-                            <th rowspan="3" style="background-color: #3cb371;">หน่วยงานที่สามารถทดสอบได้</th>
+                            <th rowspan="3" style="background-color: #3cb371;">หน่วยงานอื่นที่คาดว่าจะทดสอบได้</th>
                             <th rowspan="3" style="background-color: #3cb371;">ประเภทมาตรฐาน</th>
                             <th rowspan="3" style="background-color: #3cb371;">หน่วยงานหลัก</th>
                             <th rowspan="3" style="background-color: #3cb371;">หน่วยงานรอง</th>

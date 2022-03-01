@@ -13,12 +13,13 @@ $query = sqlsrv_query($conn, $sql);
         <div class="col-lg-12">
             <div class="section-title">
           <h2 class="font-mirt">เพิ่มข้อมูลพื้นฐาน</h2>
-          <h3 class="font-mirt">หน่วยงานคู่แข่ง</h3>
+          <h3 class="font-mirt">หน่วยงานอื่นที่คาดว่าจะทดสอบได้</h3>
         </div>
             </div>
 
         <div class="container  tab-content font">
             <div id="home" class="container-fluid tab-pane active m-2">
+            <a href="?page=add_insert_agency" class="btn btn-success bt mg-t-bt b-add mb-4">เพิ่มข้อมูล</a>
                 <table class="table table-bordered table-responsive-xl  pt-5" style="background-color:white;"  id="tableall">
                     <thead>
                         <tr>

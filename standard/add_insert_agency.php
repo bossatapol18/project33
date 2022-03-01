@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2 class="font-mirt">เพิ่มข้อมูลหน่วยงานคู่แข่ง</h2>
+                    <h2 class="font-mirt">เพิ่มข้อมูลหน่วยงานอื่นที่คาดว่าจะทดสอบได้</h2>
                 </div>
             </div>
         <div class="container card-regis font">
@@ -21,13 +21,13 @@
     @$n  = $_POST['n'];
     for($i=1;$i<=$n;$i++) : 
     ?>
-    <lable>ชื่อหน่วยงานคู่แข่ง</lable> 
+    <lable>ชื่อหน่วยงานอื่นที่คาดว่าจะทดสอบได้</lable> 
     <input type="text" class="control-form" name="<?php echo $i. 'agency_name' ; ?>" value=""> <br><br>
     <input type="hidden" name="n" value="<?php echo $n; ?>">
   
    
     <?php endfor ;  ?>
-    <input type="submit" name="ins" class="btn btn-primary" value="บันทึกข้อมูลการเพิ่มหน่วยงานคู่แข่ง">  
+    <input type="submit" name="ins" class="btn btn-primary" value="บันทึกข้อมูลการเพิ่มหน่วยงานอื่นที่คาดว่าจะทดสอบได้">  
 </form>
 <?php 
 if(isset($_POST['ins'])){

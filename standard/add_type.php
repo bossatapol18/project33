@@ -20,6 +20,7 @@ $query = sqlsrv_query($conn, $sql);
         <form method="post" action="">
             <div class="container  tab-content font">
                 <div id="home" class="container-fluid tab-pane active m-2">
+                <a href="?page=add_insert_type" class="btn btn-success mb-4">เพิ่มข้อมูล</a>
                     <table  class="table table-bordered table-responsive-xl  pt-5" id="tableall" style="background-color: white;" >
                         <thead>
                             <tr>

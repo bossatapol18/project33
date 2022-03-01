@@ -30,7 +30,7 @@ $statement = sqlsrv_query($conn,$query);
 ?>
 <div class="container">
         <form action="" method="post">   
-            <h1 align="center">รายงานหน่วยงานคู่แข่ง</h1>
+            <h1 align="center">รายงานหน่วยงานอื่นที่คาดว่าจะทดสอบได้</h1>
              <select name="search_agency" id="search_agency" multiple class="form-control selectpicker">
                 <?php while ($row = sqlsrv_fetch_array($statement, SQLSRV_FETCH_ASSOC)) : ?>
                 <option value="<?php echo $row["agency_id"] ; ?>"><?php  echo $row["agency_name"] ; ?></option>
@@ -45,7 +45,7 @@ $statement = sqlsrv_query($conn,$query);
                     <thead>
                         <tr>
                             <th class="col-1">ลำดับที่</th>
-                            <th class="col-2">หน่วยงานคู่แข่ง</th>
+                            <th class="col-2">หน่วยงานอื่นที่คาดว่าจะทดสอบได้</th>
                             <th class="col-2">วาระจากในที่ประชุมสมอ.</th>
                             <th class="col-1">เลขที่มอก.</th>
                             <th class="col-1">ชื่อมาตรฐาน</th>
