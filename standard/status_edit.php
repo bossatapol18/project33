@@ -34,25 +34,29 @@ $date_today = (date('d/m/Y H:i:s'));
                                         <div class="card-body bg-primary text-white">
                                             <div class="">
                                                 <div class="form-group mb-2">
-                                                    <label for="">สถานะ</label>
+                                                    <label for="">สถานะของเอกสาร</label>
                                                     <select class="form-control" name="status_name" value="<?php echo $data2['status_name'] ?>" style="height: unset !important;" required>
                                                         <!-- <option selected>กรุณาเลือกสถานะ</option> -->
+
                                                         <?php
                                                         $sqll = "SELECT * FROM select_status";
                                                         $queryy = sqlsrv_query($conn, $sqll);
-                                                        while ($result2 = sqlsrv_fetch_array($queryy, SQLSRV_FETCH_ASSOC)) { ?>
-                                                            <?php if($data2['status_name']== $result2['id_statuss']){ $st_name = "selected"; }
-                                                            else { $st_name = "";
 
+                                                        while ($result2 = sqlsrv_fetch_array($queryy, SQLSRV_FETCH_ASSOC)) { ?>
+                                                            
+                                                            <?php if ($data2['status_name'] == $result2['id_statuss']) {
+                                                                $st_name = "selected";
+                                                            } else {
+                                                                $st_name = "";
                                                             }
                                                             ?>
-                                                            <option value="<?php echo $result2['id_statuss'];  ?>"<?php echo $st_name;  ?> >
+
+
+                                                            <option value="<?php echo $result2['id_statuss'];  ?>" <?php echo $st_name;  ?>>
                                                                 <?php echo $result2['statuss_name'];  ?></option>
                                                         <?php } ?>
                                                     </select>
-                                                    <input id="" type="hidden" name="old_status_name" class=" form-control" value="<?php echo $data2['status_name'] ?>"  >
-       
-                                                
+                                                    <input id="" type="hidden" name="old_status_name" class=" form-control" value="<?php echo $data2['status_name'] ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -67,8 +71,8 @@ $date_today = (date('d/m/Y H:i:s'));
                                                 <div class="form-group mb-2">
                                                     <label for="">วันที่แต่งตั้ง</label>
                                                     <div class="input-group">
-                                                       <input id="" type="text" name="status_date" class=" form-control" value="<?php echo dateThai($data2['status_date'] )?>" disabled >
-                                                    <input id="mydate" type="text" name="status_date" class=" form-control"  required> 
+                                                        <input id="" type="text" name="status_date" class=" form-control" value="<?php echo dateThai($data2['status_date']) ?>" disabled>
+                                                        <input id="mydate" type="text" name="status_date" class=" form-control" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -123,15 +127,15 @@ $date_today = (date('d/m/Y H:i:s'));
                                         <div class="card-body">
                                             <div class="">
                                                 <div class="form-group mb-2">
-                                                <label class="form-label">ประเภทมาตรฐาน</label>
-                                                <select class="form-control" name="standard_mandatory" style="height: unset !important;">
-                                                    <option value="" selected disabled><?=$result['standard_mandatory']?></option>
-                                                    <?php while ($data = sqlsrv_fetch_array($query11, SQLSRV_FETCH_ASSOC)) : ?>
-                                                    <option value="<?=$data['manda_id']?>" <?=$result['standard_mandatory'] == $data['manda_id'] ? 'selected' : '' ?>>
-                                                        <?=$data['manda_name']?></option>
-                                                    <?php endwhile ;?>
-                                                </select>
-                                                            
+                                                    <label class="form-label">ประเภทมาตรฐาน</label>
+                                                    <select class="form-control" name="standard_mandatory" style="height: unset !important;">
+                                                        <option value="" selected disabled><?= $result['standard_mandatory'] ?></option>
+                                                        <?php while ($data = sqlsrv_fetch_array($query11, SQLSRV_FETCH_ASSOC)) : ?>
+                                                            <option value="<?= $data['manda_id'] ?>" <?= $result['standard_mandatory'] == $data['manda_id'] ? 'selected' : '' ?>>
+                                                                <?= $data['manda_name'] ?></option>
+                                                        <?php endwhile; ?>
+                                                    </select>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -184,9 +188,9 @@ $date_today = (date('d/m/Y H:i:s'));
 
                                                     <div class="input-group">
                                                         <input type="text" name="id_dimension_file[]" class="form-control" id="id_dimension_file" value="<?php echo $file_name ?>" disabled>
-                                                        <input type="file" name="fileupload[]" class="form-control" value="<?php echo $file_name ?>"> 
+                                                        <input type="file" name="fileupload[]" class="form-control" value="<?php echo $file_name ?>">
                                                     </div>
-                                                   
+
 
                                                 <?php } ?>
                                                 <div class="main-form1 mt-3 " id="main5">
@@ -212,26 +216,26 @@ $date_today = (date('d/m/Y H:i:s'));
                                     </div>
                                 </div>
 
-                            
 
 
-                            <!-- หลายฟอร์ม -->
-                            
-                                    <div class="col-md-6 mt-4">
-                                        <div class="card mt-8">
-                                            <div class="card-body">
-                                                <div class="">
-                                                    <div class="form-group mb-2 ">
-                                                        <label for="">กลุ่มผลิตภัณฑ์</label>
-                                                        <a href="javascript:void(0)" onclick="add_element('main4','sub_main4');" class=" float-end btn btn-success">เพิ่ม</a>
-                                                        <?php
-                                                        $standarsidtb = $_REQUEST['standard_idtb'];
-                                                        $sql = "SELECT * FROM dimension_group WHERE standard_idtb  = '$standarsidtb' ";
-                                                        $query1 = sqlsrv_query($conn, $sql);
-                                                        while ($result = sqlsrv_fetch_array($query1, SQLSRV_FETCH_ASSOC)) { ?>
-                                                            <?php $group =  $result['group_id']; ?>
-                                                            <div class="input-group mt-3">
-                                                                 <select class="form-control" name="group_id[]" id="group_id" style="height: unset !important;">
+
+                                <!-- หลายฟอร์ม -->
+
+                                <div class="col-md-6 mt-4">
+                                    <div class="card mt-8">
+                                        <div class="card-body">
+                                            <div class="">
+                                                <div class="form-group mb-2 ">
+                                                    <label for="">กลุ่มผลิตภัณฑ์</label>
+                                                    <a href="javascript:void(0)" onclick="add_element('main4','sub_main4');" class=" float-end btn btn-success">เพิ่ม</a>
+                                                    <?php
+                                                    $standarsidtb = $_REQUEST['standard_idtb'];
+                                                    $sql = "SELECT * FROM dimension_group WHERE standard_idtb  = '$standarsidtb' ";
+                                                    $query1 = sqlsrv_query($conn, $sql);
+                                                    while ($result = sqlsrv_fetch_array($query1, SQLSRV_FETCH_ASSOC)) { ?>
+                                                        <?php $group =  $result['group_id']; ?>
+                                                        <div class="input-group mt-3">
+                                                            <select class="form-control" name="group_id[]" id="group_id" style="height: unset !important;">
                                                                 <option value="">กรุณาเลือกกลุ่มผลิตภัณฑ์</option>
                                                                 <?php
                                                                 $sql2 = "SELECT * FROM group_tb";
@@ -246,71 +250,71 @@ $date_today = (date('d/m/Y H:i:s'));
                                                                 ?>
 
                                                                     <option value="<?php echo $result2['group_id'];  ?>" <?php echo $c; ?>><?php echo $result2['group_name']; ?>
-                                                                    
-                                                                </option>
+
+                                                                    </option>
 
                                                                 <?php } ?>
 
                                                                 <input style="display:none;" type="text" name="id_dimension_group[]" class="form-control" value="<?php echo $result["id_dimension_group"] ?>">
                                                             </select>
                                                             <a href="standard/delete_edit.php?id_dimension_group=<?php echo $result["id_dimension_group"] ?>" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</a>
-                                                            </div>
-                                                           
-                                                            
-
-                                                        <?php } ?>
-                                                        <div class="main-form1 mt-3 " id="main4">
-
-                                                            <div style="display:none;">
-                                                                <div class=" mb-2 input-group mt-2" id="sub_main4">
-                                                                    <select class="form-control" name="group_id[]" id="group_id" style="height: unset !important;">
-                                                                        <option selected disabled>กรุณาเลือกกลุ่มผลิตภัณฑ์
-                                                                        </option>
-                                                                        <?php
-                                                                        $sql = "SELECT * FROM group_tb";
-                                                                        $query = sqlsrv_query($conn, $sql);
-                                                                        while ($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC)) { ?>
-                                                                            <option value="<?php echo $result['group_id'];  ?>">
-                                                                                <?php echo $result['group_name'];  ?></option>
-                                                                        <?php } ?>
-
-                                                                    </select>
-                                                                    <input type="text" name="id_dimension_group[]" class="form-control" id="id_dimension_group">
-
-                                                                    <button type="button" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger ">ลบ</button>
-
-                                                                </div>
-                                                            </div>
                                                         </div>
 
-                                                    </div>
-                                                </div>
 
+
+                                                    <?php } ?>
+                                                    <div class="main-form1 mt-3 " id="main4">
+
+                                                        <div style="display:none;">
+                                                            <div class=" mb-2 input-group mt-2" id="sub_main4">
+                                                                <select class="form-control" name="group_id[]" id="group_id" style="height: unset !important;">
+                                                                    <option selected disabled>กรุณาเลือกกลุ่มผลิตภัณฑ์
+                                                                    </option>
+                                                                    <?php
+                                                                    $sql = "SELECT * FROM group_tb";
+                                                                    $query = sqlsrv_query($conn, $sql);
+                                                                    while ($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC)) { ?>
+                                                                        <option value="<?php echo $result['group_id'];  ?>">
+                                                                            <?php echo $result['group_name'];  ?></option>
+                                                                    <?php } ?>
+
+                                                                </select>
+                                                                <input type="text" name="id_dimension_group[]" class="form-control" id="id_dimension_group">
+
+                                                                <button type="button" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger ">ลบ</button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
                                             </div>
+
                                         </div>
                                     </div>
-                                
+                                </div>
 
 
-                            <!-- หลายฟอร์ม -->
-                            
-                                    <div class="col-md-6 mt-4">
-                                        <div class="card mt-8">
-                                            <div class="card-body">
-                                                <div class="">
-                                                    <div class="form-group mb-2">
-                                                        <label for="">หน่วยงานคู่แข่ง</label>
-                                                        <a href="javascript:void(0)" onclick="add_element('main10','sub_main10');" class=" float-end btn btn-success">เพิ่ม</a>
-                                                        <?php
-                                                        $standarsidtb = $_REQUEST['standard_idtb'];
-                                                        $sql2 = "SELECT * FROM dimension_agency WHERE standard_idtb  = '$standarsidtb' ";
-                                                        $query2 = sqlsrv_query($conn, $sql2);
-                                                        while ($result2 = sqlsrv_fetch_array($query2, SQLSRV_FETCH_ASSOC)) { ?>
-                                                            <?php $agency =  $result2['agency_id']; ?>
-                                                            <div class="input-group mt-3">
+
+                                <!-- หลายฟอร์ม -->
+
+                                <div class="col-md-6 mt-4">
+                                    <div class="card mt-8">
+                                        <div class="card-body">
+                                            <div class="">
+                                                <div class="form-group mb-2">
+                                                    <label for="">หน่วยงานคู่แข่ง</label>
+                                                    <a href="javascript:void(0)" onclick="add_element('main10','sub_main10');" class=" float-end btn btn-success">เพิ่ม</a>
+                                                    <?php
+                                                    $standarsidtb = $_REQUEST['standard_idtb'];
+                                                    $sql2 = "SELECT * FROM dimension_agency WHERE standard_idtb  = '$standarsidtb' ";
+                                                    $query2 = sqlsrv_query($conn, $sql2);
+                                                    while ($result2 = sqlsrv_fetch_array($query2, SQLSRV_FETCH_ASSOC)) { ?>
+                                                        <?php $agency =  $result2['agency_id']; ?>
+                                                        <div class="input-group mt-3">
                                                             <select class="form-control" name="agency_id[]" id="agency_id" style="height: unset !important;">
-                                                            
-                                                                 <option value="">กรุณาเลือกหน่วยงานคู่แข่ง</option>
+
+                                                                <option value="">กรุณาเลือกหน่วยงานคู่แข่ง</option>
                                                                 <?php
                                                                 $sql22 = "SELECT * FROM agency_tb";
                                                                 $query22 = sqlsrv_query($conn, $sql22);
@@ -329,58 +333,58 @@ $date_today = (date('d/m/Y H:i:s'));
                                                                 <input style="display:none;" type="text" name="id_dimension_agency[]" class="form-control" value="<?php echo $result2["id_dimension_agency"] ?>">
                                                             </select>
                                                             <a href="standard/delete_id_dimension_agency.php?id_dimension_agency=<?php echo $result2["id_dimension_agency"] ?>" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</a>
-                                                            </div>
-                                                               
+                                                        </div>
 
-                                                        <?php } ?>
-                                                        <div class="main-form1 mt-3 " id="main10">
 
-                                                            <div style="display:none;">
-                                                                <div class=" mb-2 input-group mt-2" id="sub_main10">
-                                                                    <select class="form-control" name="agency_id[]" id="agency_id" style="height: unset !important;">
-                                                                        <option selected disabled>
-                                                                            กรุณาเลือกหน่วยงานคู่แข่ง</option>
-                                                                        <?php
-                                                                        $sql2 = "SELECT * FROM agency_tb";
-                                                                        $query2 = sqlsrv_query($conn, $sql2);
-                                                                        while ($result = sqlsrv_fetch_array($query2, SQLSRV_FETCH_ASSOC)) { ?>
-                                                                            <option value="<?php echo $result['agency_id'];  ?>">
-                                                                                <?php echo $result['agency_name'];  ?></option>
-                                                                        <?php } ?>
-                                                                    </select>
-                                                                    <input type="text" name="id_dimension_agency[]" class="form-control" id="id_dimension_agency">
+                                                    <?php } ?>
+                                                    <div class="main-form1 mt-3 " id="main10">
 
-                                                                    <button type="button" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger ">ลบ</button>
-                                                                </div>
+                                                        <div style="display:none;">
+                                                            <div class=" mb-2 input-group mt-2" id="sub_main10">
+                                                                <select class="form-control" name="agency_id[]" id="agency_id" style="height: unset !important;">
+                                                                    <option selected disabled>
+                                                                        กรุณาเลือกหน่วยงานคู่แข่ง</option>
+                                                                    <?php
+                                                                    $sql2 = "SELECT * FROM agency_tb";
+                                                                    $query2 = sqlsrv_query($conn, $sql2);
+                                                                    while ($result = sqlsrv_fetch_array($query2, SQLSRV_FETCH_ASSOC)) { ?>
+                                                                        <option value="<?php echo $result['agency_id'];  ?>">
+                                                                            <?php echo $result['agency_name'];  ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                                <input type="text" name="id_dimension_agency[]" class="form-control" id="id_dimension_agency">
+
+                                                                <button type="button" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger ">ลบ</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
+
                                         </div>
                                     </div>
-                              
+                                </div>
 
 
-                            <!-- หลายฟอร์ม -->
-                            
-                                    <div class="col-md-6 mt-4">
-                                        <div class="card mt-8">
-                                            <div class="card-body">
-                                                <div class="">
-                                                    <div class="form-group mb-2">
-                                                        <label for="">หน่วยงานหลัก</label>
-                                                        <!-- <a href="javascript:void(0)" onclick="add_element('main15','sub_main15');" class=" float-end btn btn-success">เพิ่ม</a> -->
 
-                                                        <?php
-                                                        $standarsidtb = $_REQUEST['standard_idtb'];
-                                                        $sql3 = "SELECT * FROM dimension_department WHERE standard_idtb  = '$standarsidtb' ";
-                                                        $query3 = sqlsrv_query($conn, $sql3);
-                                                        while ($result3 = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
-                                                            <?php $department =  $result3['department_id']; ?>
-                                                            <div class="input-group mt-3">
-                                                                  <select class="form-control" name="department_id[]" id="department_id" style="height: unset !important;">
+                                <!-- หลายฟอร์ม -->
+
+                                <div class="col-md-6 mt-4">
+                                    <div class="card mt-8">
+                                        <div class="card-body">
+                                            <div class="">
+                                                <div class="form-group mb-2">
+                                                    <label for="">หน่วยงานหลัก</label>
+                                                    <!-- <a href="javascript:void(0)" onclick="add_element('main15','sub_main15');" class=" float-end btn btn-success">เพิ่ม</a> -->
+
+                                                    <?php
+                                                    $standarsidtb = $_REQUEST['standard_idtb'];
+                                                    $sql3 = "SELECT * FROM dimension_department WHERE standard_idtb  = '$standarsidtb' ";
+                                                    $query3 = sqlsrv_query($conn, $sql3);
+                                                    while ($result3 = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
+                                                        <?php $department =  $result3['department_id']; ?>
+                                                        <div class="input-group mt-3">
+                                                            <select class="form-control" name="department_id[]" id="department_id" style="height: unset !important;">
                                                                 <option value="">กรุณาเลือกหน่วยงานหลัก</option>
                                                                 <?php
                                                                 $sql33 = "SELECT * FROM department_tb";
@@ -400,29 +404,28 @@ $date_today = (date('d/m/Y H:i:s'));
                                                                 <input style="display:none;" type="text" name="id_dimension_department[]" class="form-control" value="<?php echo $result3["id_dimension_department"] ?>">
                                                             </select>
                                                             <!-- <a href="standard/delete_id_dimension_department.php?id_dimension_department=<?php echo $result3["id_dimension_department"] ?>" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</a> -->
-                                                            </div>
-                                                          
+                                                        </div>
 
-                                                        <?php } ?>
-                                                        <div class="main-form1 mt-3 " id="main15">
 
-                                                            <div style="display:none;">
-                                                                <div class=" mb-2 input-group mt-2" id="sub_main15">
-                                                                    <select class="form-control" name="department_id[]" id="department_id" style="height: unset !important;">
-                                                                        <option selected disabled>กรุณาเลือกหน่วยงานหลัก
-                                                                        </option>
-                                                                        <?php
-                                                                        $sql3 = "SELECT * FROM department_tb";
-                                                                        $query3 = sqlsrv_query($conn, $sql3);
-                                                                        while ($result = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
-                                                                            <option value="<?php echo $result['department_id'];  ?>">
-                                                                                <?php echo $result['department_name'];  ?></option>
-                                                                        <?php } ?>
-                                                                    </select>
-                                                                    <input type="text" name="id_dimension_department[]" class="form-control" id="id_dimension_department">
+                                                    <?php } ?>
+                                                    <div class="main-form1 mt-3 " id="main15">
 
-                                                                    <button type="button" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</button>
-                                                                </div>
+                                                        <div style="display:none;">
+                                                            <div class=" mb-2 input-group mt-2" id="sub_main15">
+                                                                <select class="form-control" name="department_id[]" id="department_id" style="height: unset !important;">
+                                                                    <option selected disabled>กรุณาเลือกหน่วยงานหลัก
+                                                                    </option>
+                                                                    <?php
+                                                                    $sql3 = "SELECT * FROM department_tb";
+                                                                    $query3 = sqlsrv_query($conn, $sql3);
+                                                                    while ($result = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
+                                                                        <option value="<?php echo $result['department_id'];  ?>">
+                                                                            <?php echo $result['department_name'];  ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                                <input type="text" name="id_dimension_department[]" class="form-control" id="id_dimension_department">
+
+                                                                <button type="button" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -430,30 +433,31 @@ $date_today = (date('d/m/Y H:i:s'));
                                             </div>
                                         </div>
                                     </div>
-
-                                  
-
+                                </div>
 
 
-                            <!-- หลายฟอร์ม -->
-                              <!-- หลายฟอร์ม -->
-                            
-                              <div class="col-md-6 mt-4">
-                                        <div class="card mt-8">
-                                            <div class="card-body">
-                                                <div class="">
-                                                    <div class="form-group mb-2">
-                                                        <label for="">หน่วยงานรอง</label>
-                                                        <a href="javascript:void(0)" onclick="add_element('main16','sub_main16');" class=" float-end btn btn-success">เพิ่ม</a>
 
-                                                        <?php
-                                                        $standarsidtb = $_REQUEST['standard_idtb'];
-                                                        $sql4 = "SELECT * FROM dimension_department1 WHERE standard_idtb  = '$standarsidtb' ";
-                                                        $query43 = sqlsrv_query($conn, $sql4);
-                                                        while ($result43 = sqlsrv_fetch_array($query43, SQLSRV_FETCH_ASSOC)) { ?>
-                                                            <?php $department =  $result43['department1_id']; ?>
-                                                            <div class="input-group mt-3">
-                                                                  <select class="form-control" name="department1_id[]" id="department1_id" style="height: unset !important;">
+
+
+                                <!-- หลายฟอร์ม -->
+                                <!-- หลายฟอร์ม -->
+
+                                <div class="col-md-6 mt-4">
+                                    <div class="card mt-8">
+                                        <div class="card-body">
+                                            <div class="">
+                                                <div class="form-group mb-2">
+                                                    <label for="">หน่วยงานรอง</label>
+                                                    <a href="javascript:void(0)" onclick="add_element('main16','sub_main16');" class=" float-end btn btn-success">เพิ่ม</a>
+
+                                                    <?php
+                                                    $standarsidtb = $_REQUEST['standard_idtb'];
+                                                    $sql4 = "SELECT * FROM dimension_department1 WHERE standard_idtb  = '$standarsidtb' ";
+                                                    $query43 = sqlsrv_query($conn, $sql4);
+                                                    while ($result43 = sqlsrv_fetch_array($query43, SQLSRV_FETCH_ASSOC)) { ?>
+                                                        <?php $department =  $result43['department1_id']; ?>
+                                                        <div class="input-group mt-3">
+                                                            <select class="form-control" name="department1_id[]" id="department1_id" style="height: unset !important;">
                                                                 <option value="">กรุณาเลือกหน่วยงานรอง</option>
                                                                 <?php
                                                                 $sql43 = "SELECT * FROM department_tb";
@@ -473,29 +477,28 @@ $date_today = (date('d/m/Y H:i:s'));
                                                                 <input style="display:none;" type="text" name="id_dimension_department1[]" class="form-control" value="<?php echo $result43["id_dimension_department1"] ?>">
                                                             </select>
                                                             <a href="standard/delete_id_dimension_department1.php?id_dimension_department1=<?php echo $result43["id_dimension_department1"] ?>" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</a>
-                                                            </div>
-                                                          
+                                                        </div>
 
-                                                        <?php } ?>
-                                                        <div class="main-form1 mt-3 " id="main16">
 
-                                                            <div style="display:none;">
-                                                                <div class=" mb-2 input-group mt-2" id="sub_main16">
-                                                                    <select class="form-control" name="department1_id[]" id="department1_id" style="height: unset !important;">
-                                                                        <option selected disabled>กรุณาเลือกหน่วยงานรอง
-                                                                        </option>
-                                                                        <?php
-                                                                        $sql4 = "SELECT * FROM department_tb";
-                                                                        $query43 = sqlsrv_query($conn, $sql4);
-                                                                        while ($result = sqlsrv_fetch_array($query43, SQLSRV_FETCH_ASSOC)) { ?>
-                                                                            <option value="<?php echo $result['department_id'];  ?>">
-                                                                                <?php echo $result['department_name'];  ?></option>
-                                                                        <?php } ?>
-                                                                    </select>
-                                                                    <input type="text" name="id_dimension_department1[]" class="form-control" id="id_dimension_department1">
+                                                    <?php } ?>
+                                                    <div class="main-form1 mt-3 " id="main16">
 
-                                                                    <button type="button" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</button>
-                                                                </div>
+                                                        <div style="display:none;">
+                                                            <div class=" mb-2 input-group mt-2" id="sub_main16">
+                                                                <select class="form-control" name="department1_id[]" id="department1_id" style="height: unset !important;">
+                                                                    <option selected disabled>กรุณาเลือกหน่วยงานรอง
+                                                                    </option>
+                                                                    <?php
+                                                                    $sql4 = "SELECT * FROM department_tb";
+                                                                    $query43 = sqlsrv_query($conn, $sql4);
+                                                                    while ($result = sqlsrv_fetch_array($query43, SQLSRV_FETCH_ASSOC)) { ?>
+                                                                        <option value="<?php echo $result['department_id'];  ?>">
+                                                                            <?php echo $result['department_name'];  ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                                <input type="text" name="id_dimension_department1[]" class="form-control" id="id_dimension_department1">
+
+                                                                <button type="button" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger">ลบ</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -503,18 +506,19 @@ $date_today = (date('d/m/Y H:i:s'));
                                             </div>
                                         </div>
                                     </div>
-                                
-                                
+                                </div>
+
+
+                            </div>
                     </div>
+
+
+                    <center>
+                        <button type="submit" name="save_multiple_data" class="btn btn-primary mt-3">บันทึกข้อมูล</button>
+                    </center>
+                    </form>
+
                 </div>
-
-
-                <center>
-                    <button type="submit" name="save_multiple_data" class="btn btn-primary mt-3">บันทึกข้อมูล</button>
-                </center>
-                </form>
-
-            </div>
             </div>
             </div>
             </div>

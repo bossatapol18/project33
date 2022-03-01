@@ -61,18 +61,7 @@ $status_date =  datetodb($_REQUEST['status_date']);
 $sql_status = "INSERT INTO doc_status ( status_name , status_date , standard_idtb  ) 
      VALUES ('$status_name', ' $status_date', '$standard_idtb')";
      $stmt_status = sqlsrv_query($conn, $sql_status);
-     
-
-//     $stmt_status = sqlsrv_query($conn, $sql_status);
-//$status_date =  $_REQUEST['status_date'];
-// if($old_status_name != $status_name){
-//     $sql_status = "INSERT INTO doc_status ( status_name , status_date , standard_idtb  ) 
-//     VALUES ('$status_name', ' $date', '$standard_idtb')";
-
-//     $stmt_status = sqlsrv_query($conn, $sql_status);
-// }
-
-    
+        
 
     //ไฟล์
     $count_file = count($_REQUEST['id_dimension_file']);

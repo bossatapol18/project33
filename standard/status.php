@@ -101,7 +101,7 @@ if (isset($_POST) && !empty($_POST)) {
 // INNER JOIN select_status b ON a.standard_status = b.status_name
 // WHERE standard_detail  LIKE '%$strKeyword%' OR standard_status LIKE '%$strKeyword%'
 // OR standard_number  LIKE '%$strKeyword%' OR standard_note LIKE '%$strKeyword%'OR standard_day  LIKE ' %$strKeyword%' OR statuss_name LIKE '%$strKeyword%'");
-$sql = "SELECT * FROM main_std WHERE standard_number  LIKE '%$strKeyword%'";
+$sql = "SELECT * ,  a.standard_source,b.source_id,b.source_name AS name_source FROM main_std a JOIN source_tb b ON a.standard_source = b.source_id WHERE a.standard_number  LIKE '%$strKeyword%'";
 $query = sqlsrv_query($conn, $sql);
 
 // $sql3 = "SELECT * FROM doc_status WHERE standard_idtb=" . $data['standard_idtb'];
@@ -153,7 +153,8 @@ $query2 = sqlsrv_query($conn, $sql2);
                         <tr>
                             <th class="col-1 text-center">ลำดับที่</th>
                             <th class="col-1 text-center">วันที่เพิ่มเอกสาร</th>
-                            <th class="col-1 text-center">วาระจากในที่ประชุมสมอ.</th>
+                            <th class="col-1 text-center">ที่มา</th>
+                            <th class="col-1 text-center">วาระจากที่ประชุมสมอ.</th>
                             <th class="col-1 text-center">วันที่ประชุมสมอ.</th>
                             <th class="col-2 text-center">เลขที่มอก.</th>
                             <th class="col-3 text-center">ชื่อมาตรฐาน</th>
@@ -177,6 +178,7 @@ $query2 = sqlsrv_query($conn, $sql2);
                             <tr class="text-center">
                                 <td class="align-middle"><?= $i++ ?></td>
                                 <td class="align-middle"><?= dateThai($data['standard_create'])  ?></td>
+                                <td class="align-middle"><?= $data['name_source'] ?></td>
                                 <td class="align-middle"><?= $data['standard_meet'] ?></td>
                                 <?php if ($data['standard_source'] == '1') { ?>
                                     <td class="align-middle"><?= dateThai($data['standard_survey'])  ?></td>

@@ -1,26 +1,4 @@
-<?php
-$id_statuss = (isset($_GET['id_statuss'])) ? $_GET['id_statuss'] : '';
-$statuss_name = (isset($_GET['statuss_name'])) ? $_GET['statuss_name'] : '';
-if (isset($_POST) && !empty($_POST)) {
-    $id_statuss = $_POST['id_statuss'];
-    $statuss_name = $_POST['statuss_name'];
-    $sql = "INSERT INTO select_status VALUES (?,?) ";
-    $params = array($id_statuss , $statuss_name);
-    $sss = sqlsrv_query($conn, $sql, $params);
-    if ($sss = true) {
-        $alert = '<script type="text/javascript">';
-        $alert .= 'alert("เพิ่มข้อมูลสถานะสำเร็จ !!");';
-        $alert .= 'window.location.href = "?page=add_type";';
-    
-        $alert .= '</script>';
-        echo $alert;
-        exit();;
-    } else {
-        echo "Error: " . $sql . "<br>" . sqlsrv_errors($conn);
-    }
-    sqlsrv_close($conn);
-}
-?>
+
 <form method="post" action="">
 <section class="upcoming-meetings" id="meetings">
     <div class="container">
@@ -31,24 +9,39 @@ if (isset($_POST) && !empty($_POST)) {
                 </div>
             </div>
         <div class="container card-regis font">
-
-
             <hr>
-            <br>
-            <div class="">
-                <div>
-                    <label>หมายเลขสถานะ</label>
-                    <input  type="text" name="id_statuss" class="form-control" autocomplete="off">
-                    <label >ชื่อสถานะ</label>
-                    <input type="text" name="statuss_name" class="form-control" autocomplete="off">
-                </div>
-            </div>
-            <hr>
-            <center>
-                <div class="bt">
-                    <button type="submit" class="btn btn-info bt">เพิ่มข้อมูล</button>
-                </div>
-            </center>
+<form action="" method="post">
+    <input type="text" class="control-form" name="n" value="">
+    <input type="submit" name="s" value="เพิ่มจำนวนฟอร์ม" class="btn btn-info" > 
+</form>
+
+<hr>
+        <form action="" method="post">
+    <?php
+    @$n  = $_POST['n'];
+    for($i=1;$i<=$n;$i++) : 
+    ?>
+    <lable>ชื่อสถานะ</lable> 
+    <input type="text" class="control-form" name="<?php echo $i. 'statuss_name' ; ?>" value=""> <br><br>
+    <input type="hidden" name="n" value="<?php echo $n; ?>">
+  
+   
+    <?php endfor ;  ?>
+    <input type="submit" name="ins" class="btn btn-primary" value="บันทึกข้อมูลการเพิ่มสถานะ">  
+</form>
+<?php 
+if(isset($_POST['ins'])){
+    include 'connection/connection.php' ;
+    $n = $_POST['n'];
+    for($i=1;$i<=$n;$i++){
+        $statuss_name = $_POST[$i."statuss_name"];
+        $sql = "INSERT INTO select_status VALUES (?)";
+        $params = array($statuss_name);
+        $show = sqlsrv_query($conn, $sql, $params);
+    }
+}
+?> 
+
 </form>
 </div>
 

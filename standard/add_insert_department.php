@@ -1,52 +1,47 @@
-<?php
-$department_id = (isset($_GET['department_id'])) ? $_GET['department_id'] : '';
-$department_name = (isset($_GET['department_name'])) ? $_GET['department_name'] : '';
-if (isset($_POST) && !empty($_POST)) {
-    $department_id = $_POST['department_id'];
-    $department_name = $_POST['department_name'];
-    $sql = "INSERT INTO department_tb VALUES (?,?) ";
-    $params = array( $department_id,$department_name);
-    if (sqlsrv_query($conn, $sql, $params)) {
-        $alert = '<script type="text/javascript">';
-        $alert .= 'alert("เพิ่มหน่วยงานหลักสำเร็จ !!");';
-        $alert .= 'window.location.href = "?page=add_department";';
-        $alert .= '</script>';
-        echo $alert;
-        exit();
-    } else {
-        echo "Error: " . $sql . "<br>" . sqlsrv_errors($conn);
-    }
-    sqlsrv_close($conn);
-}
-?>
+
 <form method="post" action="">
 <section class="upcoming-meetings" id="meetings">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2 class="font-mirt">เพิ่มหน่วยงานหลัก</h2>
+                    <h2 class="font-mirt">เพิ่มข้อมูลหน่วยงานหลัก</h2>
                 </div>
             </div>
         <div class="container card-regis font">
-
-
             <hr>
-            <br>
-            <div class="">
-                <div>
-                    <label>หมายเลขหน่วยงานหลัก</label>
-                    <input  type="text" name="department_id" class="form-control" autocomplete="off">
-                    <label >ชื่อหน่วยงานหลัก</label>
-                    <input type="text" name="department_name" class="form-control" autocomplete="off">
-                </div>
-            </div>
-            <hr>
-            <center>
-                <div class="bt">
-                    <button type="submit" class="btn btn-info bt">เพิ่มข้อมูล</button>
-                </div>
-            </center>
+<form action="" method="post">
+    <input type="text" class="control-form" name="n" value="">
+    <input type="submit" name="s" value="เพิ่มจำนวนฟอร์ม" class="btn btn-info" > 
+</form>
+
+<hr>
+        <form action="" method="post">
+    <?php
+    @$n  = $_POST['n'];
+    for($i=1;$i<=$n;$i++) : 
+    ?>
+    <lable>ชื่อหน่วยงานหลัก</lable> 
+    <input type="text" class="control-form" name="<?php echo $i. 'department_name' ; ?>" value=""> <br><br>
+    <input type="hidden" name="n" value="<?php echo $n; ?>">
+  
+   
+    <?php endfor ;  ?>
+    <input type="submit" name="ins" class="btn btn-primary" value="บันทึกข้อมูลการเพิ่มหน่วยงานหลัก">  
+</form>
+<?php 
+if(isset($_POST['ins'])){
+    include 'connection/connection.php' ;
+    $n = $_POST['n'];
+    for($i=1;$i<=$n;$i++){
+        $department_name = $_POST[$i."department_name"];
+        $sql = "INSERT INTO department_tb VALUES (?)";
+        $params = array($department_name);
+        $show = sqlsrv_query($conn, $sql, $params);
+    }
+}
+?> 
+
 </form>
 </div>
 
