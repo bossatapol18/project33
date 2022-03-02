@@ -101,7 +101,7 @@ if (isset($_POST) && !empty($_POST)) {
 // INNER JOIN select_status b ON a.standard_status = b.status_name
 // WHERE standard_detail  LIKE '%$strKeyword%' OR standard_status LIKE '%$strKeyword%'
 // OR standard_number  LIKE '%$strKeyword%' OR standard_note LIKE '%$strKeyword%'OR standard_day  LIKE ' %$strKeyword%' OR statuss_name LIKE '%$strKeyword%'");
-$sql = "SELECT * ,  a.standard_source,b.source_id,b.source_name AS name_source FROM main_std a JOIN source_tb b ON a.standard_source = b.source_id WHERE a.standard_number  LIKE '%$strKeyword%'";
+$sql = "SELECT * ,  a.standard_source,b.source_id,b.source_name AS name_source FROM main_std a JOIN source_tb b ON a.standard_source = b.source_id WHERE a.standard_number LIKE '%$strKeyword%' ORDER BY standard_idtb desc";
 $query = sqlsrv_query($conn, $sql);
 
 // $sql3 = "SELECT * FROM doc_status WHERE standard_idtb=" . $data['standard_idtb'];
