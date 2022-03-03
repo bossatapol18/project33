@@ -444,9 +444,17 @@ $date_today = (date('d/m/Y H:i:s'));
             </div>
 
             <div>
+                <hr>
+                <br>
+                <br>
+                <br>
+                <br>
+
+     
+                
                 <center>
                     <!--  -->
-                    <button type="submit" class="btn btn-primary mt-3">
+                    <button type="submit" class="btn btn-primary">
                         <h5 class="font-mirt">บันทึกข้อมูล</h5>
                     </button>
                 </center>

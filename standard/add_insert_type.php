@@ -10,25 +10,33 @@
             </div>
         <div class="container card-regis font">
             <hr>
+            <div class="row">
+    <div class="col-md-8">
 <form action="" method="post">
-    <input type="text" class="control-form" name="n" value="">
+    <label>กรุณากรอกจำนวนสถานะที่ต้องการเพิ่ม</label>
+    <input type="text" class="form-control" name="n" value="">
+    <br>
     <input type="submit" name="s" value="เพิ่มจำนวนฟอร์ม" class="btn btn-info" > 
 </form>
-
+    </div>
+            </div>
 <hr>
+<div class="row">
+    <div class="col-md-8">
         <form action="" method="post">
     <?php
     @$n  = $_POST['n'];
     for($i=1;$i<=$n;$i++) : 
     ?>
     <lable>ชื่อสถานะ</lable> 
-    <input type="text" class="control-form" name="<?php echo $i. 'statuss_name' ; ?>" value=""> <br><br>
+    <input type="text" class="form-control" name="<?php echo $i. 'statuss_name' ; ?>" value=""> <br><br>
     <input type="hidden" name="n" value="<?php echo $n; ?>">
-  
    
     <?php endfor ;  ?>
     <input type="submit" name="ins" class="btn btn-primary" value="บันทึกข้อมูลการเพิ่มสถานะ">  
 </form>
+    </div>
+</div>
 <?php 
 if(isset($_POST['ins'])){
     include 'connection/connection.php' ;
