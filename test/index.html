@@ -1,0 +1,14 @@
+<select id="quantidade">
+    <option value="1">0 A 30 PÇS</option>
+    <option value="2">30 A 50 PÇS</option>
+    <option value="3">50 A 100 PÇS</option>
+</select> 
+
+<script> 
+    function MinPecas(){
+        if (this.value === '1'){
+            alert("MÍNIMO DE 30 PEÇAS PARA ORÇAMENTO");
+        }
+     }
+     document.getElementById('quantidade').addEventListener('change', MinPecas);
+</script>

@@ -219,7 +219,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                             <div class="">
                                                 <div class="form-group mb-2 input-group mt-2">
 
-                                                    <select class="form-control chosen" name="group_id[]" id="group_id" style="height: unset !important;">
+                                                    <select class="form-control" name="group_id[]" id="group_id" style="height: unset !important;">
                                                         <option selected disabled>กรุณาเลือกกลุ่มผลิตภัณฑ์
                                                         </option>
                                                         <?php
@@ -269,7 +269,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                             <div class="">
                                                 <div class="form-group mb-2 input-group mt-2">
 
-                                                    <select class="form-control chosen" name="agency_id[]" id="agency_id" style="height: unset !important;">
+                                                    <select class="form-control" name="agency_id[]" id="agency_id" style="height: unset !important;">
                                                         <option selected disabled>
                                                             กรุณาเลือกหน่วยงานอื่นที่คาดว่าจะทดสอบได้</option>
                                                         <?php
@@ -367,7 +367,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                             <div class="">
                                                 <div class="form-group mb-2 input-group mt-2">
 
-                                                    <select class="form-control chosen" name="department_id[]" id="department_id" style="height: unset !important;">
+                                                    <select class="form-control" name="department_id[]" id="department_id" style="height: unset !important;">
                                                         <option selected disabled>กรุณาเลือกหน่วยงานหลัก
                                                         </option>
                                                         <?php
@@ -415,7 +415,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                             <div class="">
                                                 <div class="form-group mb-2 input-group mt-2">
 
-                                                    <select class="form-control chosen" name="department1_id[]" id="department1_id" style="height: unset !important;">
+                                                    <select class="form-control" name="department1_id[]" id="department1_id" style="height: unset !important;">
                                                         <option selected disabled>กรุณาเลือกหน่วยงานรอง
                                                         </option>
                                                         <?php

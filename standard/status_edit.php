@@ -35,7 +35,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                             <div class="">
                                                 <div class="form-group mb-2">
                                                     <label for="">สถานะของเอกสาร</label>
-                                                    <select class="form-control" name="status_name" value="<?php echo $data2['status_name'] ?>" style="height: unset !important;" required>
+                                                    <select id="quantidade" class="form-control" name="status_name" value="<?php echo $data2['status_name'] ?>" style="height: unset !important;" required>
                                                         <!-- <option selected>กรุณาเลือกสถานะ</option> -->
 
                                                         <?php
@@ -534,4 +534,30 @@ $date_today = (date('d/m/Y H:i:s'));
     picker_date(document.getElementById("mydate"), {
         year_range: "-12:+10"
     });
+</script>
+<script> 
+    function MinPecas(){
+        if (this.value === '1'){
+            alert("โปรดแนบไฟล์ : หนังสือจาก สมอ. / โปรดระบุหมายเหตุ : เลขจดหมาย/เลขสารบรรณ");
+        }
+        if (this.value === '2'){
+            alert("โปรดระบุวันที่ : วันส่งเอกสารออก / โปรดระบุหมายเหตุ : เลขจดหมาย/เลขสารบรรณ");
+        }
+        if (this.value === '3'){
+            alert("โปรดระบุวันที่ : วันที่ตรวจประเมิน / โปรดระบุหมายเหตุ : หน่วยงานที่เกี่ยวข้อง");
+        }
+        if (this.value === '4'){
+            alert("โปรดระบุวันที่ : วันที่ตรวจประเมินแล้วเสร็จ / โปรดระบุหมายเหตุ : หน่วยงานที่เกี่ยวข้อง");
+        }
+        if (this.value === '5'){
+            alert("โปรดระบุวันที่ : หนังสือจาก สมอ. / โปรดระบุหมายเหตุ : เลขจดหมาย/เลขสารบรรณ");
+        }
+        if (this.value === '6'){
+            alert("โปรดแนบไฟล์ : ประกาศราชกิจจานุเบกษา");
+        }
+        else{
+        alert("โปรดแนบไฟล์ / ระบุวันที่ / โปรดระบุหมายเหตุเพิ่มเติม");
+        }
+     }
+     document.getElementById('quantidade').addEventListener('change', MinPecas);
 </script>
