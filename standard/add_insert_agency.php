@@ -37,7 +37,17 @@ if(isset($_POST['ins'])){
         $agency_name = $_POST[$i."agency_name"];
         $sql = "INSERT INTO agency_tb VALUES (?)";
         $params = array($agency_name);
-        $show = sqlsrv_query($conn, $sql, $params);
+        if (sqlsrv_query($conn, $sql , $params)) {
+            $alert = '<script type="text/javascript">';
+            $alert .= 'alert("เพิ่มข้อมูลหน่วยงานอื่นสำเร็จ !!");';
+            $alert .= 'window.location.href = "?page=add_agency";';
+            $alert .= '</script>';
+            echo $alert;
+            exit();;
+        } else {
+            echo "Error: " . $sql4 . "<br>" . sqlsrv_errors($conn);
+        }
+        sqlsrv_close($conn);
     }
 }
 ?> 
