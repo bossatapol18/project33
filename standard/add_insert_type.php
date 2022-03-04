@@ -33,7 +33,7 @@
     <input type="hidden" name="n" value="<?php echo $n; ?>">
    
     <?php endfor ;  ?>
-    <input type="submit" name="ins" class="btn btn-primary"  value="บันทึกข้อมูลการเพิ่มสถานะ">  
+    <input type="submit" name="ins" class="btn btn-primary" value="บันทึกข้อมูลการเพิ่มสถานะ">  
 </form>
     </div>
 </div>
@@ -41,22 +41,14 @@
 if(isset($_POST['ins'])){
     include 'connection/connection.php' ;
     $n = $_POST['n'];
-    for($i=1;$i<=$n;$i++){
-        $statuss_name = $_POST[$i."statuss_name"];
+    for ($i=1;$i<=$n;$i++) {
+        $statuss_name = $_POST[$i . "statuss_name"];
         $sql = "INSERT INTO select_status VALUES (?)";
         $params = array($statuss_name);
-        if (sqlsrv_query($conn, $sql , $params)) {
-            $alert = '<script type="text/javascript">';
-            $alert .= 'alert("เพิ่มข้อมูลสถานะสำเร็จ !!");';
-            $alert .= 'window.location.href = "?page=add_type";';
-            $alert .= '</script>';
-            echo $alert;
-            exit();;
-        } else {
-            echo "Error: " . $sql4 . "<br>" . sqlsrv_errors($conn);
-        }
-        sqlsrv_close($conn);
+        $pp =sqlsrv_query($conn, $sql , $params);
     }
+    echo '<script>alert("เพิ่มเรียบร้อย");</script>';
+    echo '<script>window.location.href="?page=add_type"</script>';
 }
 ?> 
 
@@ -66,3 +58,16 @@ if(isset($_POST['ins'])){
 
 
 </section>
+
+<!-- if (sqlsrv_query($conn, $sql , $params)) {
+            $alert = '<script type="text/javascript">';
+            $alert .= 'alert("เพิ่มข้อมูลสถานะสำเร็จ !!");';
+            $alert .= 'window.location.href = "?page=add_type";';
+            $alert .= '</script>';
+            echo $alert;
+            exit();
+        } else {
+            echo "Error: " . $sql . "<br>" . sqlsrv_errors($conn);
+        }
+        sqlsrv_close($conn);
+    } -->

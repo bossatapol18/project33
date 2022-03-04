@@ -167,8 +167,6 @@ if ($mode == "insert_data") {
         }
     }
 
-
-
     if (sqlsrv_query($conn, $sql5)) {
         $alert = '<script type="text/javascript">';
         $alert .= 'alert("เพิ่มข้อมูลสถานะสำเร็จ !!");';

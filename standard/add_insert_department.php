@@ -37,20 +37,13 @@ if(isset($_POST['ins'])){
         $department_name = $_POST[$i."department_name"];
         $sql = "INSERT INTO department_tb VALUES (?)";
         $params = array($department_name);
-        if (sqlsrv_query($conn, $sql , $params)) {
-            $alert = '<script type="text/javascript">';
-            $alert .= 'alert("เพิ่มข้อมูลหน่วยงานหลัก !!");';
-            $alert .= 'window.location.href = "?page=add_department";';
-            $alert .= '</script>';
-            echo $alert;
-            exit();;
-        } else {
-            echo "Error: " . $sql4 . "<br>" . sqlsrv_errors($conn);
-        }
-        sqlsrv_close($conn);
+        $pp =sqlsrv_query($conn, $sql , $params);
     }
+    echo '<script>alert("เพิ่มเรียบร้อย");</script>';
+    echo '<script>window.location.href="?page=add_department"</script>';
 }
 ?> 
+
 
 </form>
 </div>

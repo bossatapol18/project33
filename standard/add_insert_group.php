@@ -37,19 +37,10 @@ if(isset($_POST['ins'])){
         $group_name = $_POST[$i."group_name"];
         $sql = "INSERT INTO group_tb VALUES (?)";
         $params = array($group_name);
-        if (sqlsrv_query($conn, $sql , $params)) {
-            $alert = '<script type="text/javascript">';
-            $alert .= 'alert("เพิ่มข้อมูลกลุ่มผลิตภัณฑ์สำเร็จ !!");';
-            $alert .= 'window.location.href = "?page=add_group";';
-            $alert .= '</script>';
-            echo $alert;
-            exit();;
-        } else {
-            echo "Error: " . $sql4 . "<br>" . sqlsrv_errors($conn);
-        }
-        sqlsrv_close($conn);
-    
+        $pp =sqlsrv_query($conn, $sql , $params);
     }
+    echo '<script>alert("เพิ่มเรียบร้อย!!");</script>';
+    echo '<script>window.location.href="?page=add_group"</script>';
 }
 ?> 
 
