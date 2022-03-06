@@ -3,7 +3,9 @@ $page = (isset($_GET['page'])) ? $_GET['page'] : '';
 
 if (isset($_GET['standard_idtb']) && !empty($_GET['standard_idtb'])) {
     $standard_idtb = $_GET['standard_idtb'];
-    $sql = "SELECT * ,a.standard_source,b.source_id,b.source_name AS name_source FROM main_std a JOIN source_tb b ON a.standard_source = b.source_id WHERE standard_idtb='$standard_idtb'";
+    $sql = "SELECT * ,a.standard_source,b.source_id,b.source_name AS name_source , a.standard_mandatory,c.manda_id,c.manda_name AS name_manda
+    FROM main_std a JOIN source_tb b ON a.standard_source = b.source_id 
+    JOIN manda_tb c ON a.standard_mandatory = c.manda_id WHERE standard_idtb='$standard_idtb'";
 $query = sqlsrv_query($conn, $sql);
 $result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
 
@@ -57,9 +59,9 @@ $query3 = sqlsrv_query($conn, $sql3);
                 <!--ซ้าย-->
                 <div class="col-sm-6">
                     <div class="card   mb-3" style="max-width:100%">
-                        <div class="card-header text-white bg-primary">เลขที่มอก มาตรฐานทั่วไป/มาตรฐานบังคับ</div>
+                        <div class="card-header text-white bg-primary">เลขที่มอก</div>
                         <div class="card-body">
-                            <p class="card-text"><?php echo $result['standard_number']; ?> </p>
+                            <p class="card-text"><?php echo $result['standard_number']; ?> || <?php echo $result['name_manda']; ?> </p>
                         </div>
                     </div>
                 </div>
