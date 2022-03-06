@@ -100,7 +100,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                         <div class="card-body">
                                             <div class="">
                                                 <div class="form-group mb-2 f-red">
-                                                    <label for="">เลขที่ มอก.* มาตรฐานทั่วไป/มาตรฐานบังคับ</label>
+                                                    <label for="">เลขที่ มอก.*</label>
                                                     <input type="text" name="standard_number" class="form-control" required value="<?php echo $result["standard_number"] ?>">
                                                 </div>
                                             </div>

@@ -57,7 +57,7 @@ $query3 = sqlsrv_query($conn, $sql3);
                 <!--ซ้าย-->
                 <div class="col-sm-6">
                     <div class="card   mb-3" style="max-width:100%">
-                        <div class="card-header text-white bg-primary">เลขที่มอก</div>
+                        <div class="card-header text-white bg-primary">เลขที่มอก มาตรฐานทั่วไป/มาตรฐานบังคับ</div>
                         <div class="card-body">
                             <p class="card-text"><?php echo $result['standard_number']; ?> </p>
                         </div>
