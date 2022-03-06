@@ -168,7 +168,7 @@ $query3 = sqlsrv_query($conn, $sql3);
                     <div class="card   mb-3" style="max-width:100%">
                         <div class="card-header text-white bg-primary">สถานะล่าสุด</div>
                         <div class="card-body">
-                        วันที่<?php echo datethai($data2['status_date']) ; ?> || ผู้บันทึกข้อมูล :: <?=$_SESSION['user_login'] ; ?>
+                        วันที่ <?php echo datethai($data2['status_date']) ; ?> || ผู้บันทึกข้อมูล :: <?=$_SESSION['user_login'] ; ?>
                             <p class="card-text"><?php echo $data2['name_status']; ?> </p>
                         </div>
                     </div>
