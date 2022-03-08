@@ -55,9 +55,14 @@ if (isset($_POST) && !empty($_POST)) {
          WHERE standard_idtb = '$standard_idtb' ";
 // print_r($_POST);
 // exit;
+echo $status_date = $data2['status_date'];
+
 $old_status_name = $_REQUEST['old_status_name'];
 $status_name = $_REQUEST['status_name'];
 $status_date =  datetodb($_REQUEST['status_date']);
+if($status_date == "" || $status_date == " " || $status_date == "-543--"){
+    $status_date = $data2['status_date'];
+}
 $sql_status = "INSERT INTO doc_status ( status_name , status_date , standard_idtb  ) 
      VALUES ('$status_name', ' $status_date', '$standard_idtb')";
      $stmt_status = sqlsrv_query($conn, $sql_status);

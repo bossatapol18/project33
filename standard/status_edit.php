@@ -72,6 +72,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                                     <label for="">วันที่แต่งตั้ง</label>
                                                     <div class="input-group" >
                                                         <input id="" type="text" name="status_date" class=" form-control" value="<?php echo dateThai($data2['status_date']) ?>" disabled>
+                                                        <!-- <input id="" type="text" name="status_date" class=" form-control"  sel_val="01/03/2565" disabled> -->
                                                         <input id="mydate" type="text" name="status_date" class=" form-control">
                                                     </div>
                                                 </div>
