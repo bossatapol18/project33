@@ -6,6 +6,11 @@
                     <h2 class="font-mirt">เพิ่มข้อมูลหน่วยงานอื่นที่คาดว่าจะทดสอบได้</h2>
                 </div>
             </div>
+            <div class="mb-3">
+            <button class="btn btn-success bt mg-t-bt b-add mt-3" onclick="add_element('form_insert','table_insert');">+ เพิ่ม</button>
+
+            </div>
+         
             <form id="form_insert" action="" method="post">
 
                 <input type="hidden" name="mode" value="insert_data">
@@ -29,8 +34,7 @@
                 </table>
             </form>
         </div>
-        <button class="btn btn-success bt mg-t-bt b-add mt-3" onclick="add_element('form_insert','table_insert');">เพิ่ม</button>
-        <button class="btn btn-primary bt mg-t-bt b-add mt-3" onclick="$('#form_insert').submit();">บันทึก</button>
+        <button class="btn btn-primary mt-3" onclick="$('#form_insert').submit();">บันทึก</button>
 
     </div>
 </section>
