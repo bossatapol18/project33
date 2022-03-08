@@ -33,15 +33,15 @@ if (isset($_POST) && !empty($_POST)) {
                 </div>
             </div>
 
-    </div>
-    <form action="" method="post" enctype=multipart/form-data>
-        <div class="container  tab-content font">
-            <div id="home" class="container-fluid tab-pane active m-2">
-                <div class="mb-3">
-                    <label class="form-label">ชื่อหน่วยงานอื่นที่คาดว่าจะทดสอบได้</label>
-                    <input type="text" class="form-control" value="<?= $result['agency_name'] ?>" name="agency_name" placeholder="ชื่อหน่วยงานอื่นที่คาดว่าจะทดสอบได้ :" required autocomplete="off">
-                </div>
-                <button type="submit" class="btn btn-primary">บันทึก</button>
-    </form>
+        </div>
+        <form action="" method="post" enctype=multipart/form-data>
+            <div class="container  tab-content font">
+                <div id="home" class="container-fluid tab-pane active m-2">
+                    <div class="mb-3">
+                        <label class="form-label">ชื่อหน่วยงานอื่นที่คาดว่าจะทดสอบได้</label>
+                        <input type="text" class="form-control" value="<?= $result['agency_name'] ?>" name="agency_name" placeholder="ชื่อหน่วยงานอื่นที่คาดว่าจะทดสอบได้ :" required autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
+        </form>
     </div>
     </div>
