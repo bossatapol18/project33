@@ -1,52 +1,51 @@
+<form id="form_insert" action="" method="post">
 
-<form method="post" action="">
-<section class="upcoming-meetings" id="meetings">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2 class="font-mirt">เพิ่มข้อมูลหน่วยงานอื่นที่คาดว่าจะทดสอบได้</h2>
-                </div>
-            </div>
-        <div class="container card-regis font">
-            <hr>
-<form action="" method="post">
-    <input type="text" class="control-form" name="n" value="">
-    <input type="submit" name="s" value="เพิ่มจำนวนฟอร์ม" class="btn btn-info" > 
+<input type="hidden" name="mode" value="insert_data">
+
+<table id="table_insert">
+    <tr>
+        <td>ชื่อหน่วยงานที่คาดว่าจะทดสอบได้: <input type="text" class="form-control" name="agency_name[]"></td>
+    </tr>
+    <tr>
+        <td align="right">
+            <button type="button" onclick="$(this).parent().parent().parent().remove();">-ลบ</button>
+        </td>
+    </tr>
+</table>
 </form>
 
-<hr>
-        <form action="" method="post">
-    <?php
-    @$n  = $_POST['n'];
-    for($i=1;$i<=$n;$i++) : 
-    ?>
-    <lable>ชื่อหน่วยงานอื่นที่คาดว่าจะทดสอบได้</lable> 
-    <input type="text" class="control-form" name="<?php echo $i. 'agency_name' ; ?>" value=""> <br><br>
-    <input type="hidden" name="n" value="<?php echo $n; ?>">
-  
-   
-    <?php endfor ;  ?>
-    <input type="submit" name="ins" class="btn btn-primary" value="บันทึกข้อมูลการเพิ่มหน่วยงานอื่นที่คาดว่าจะทดสอบได้">  
-</form>
-<?php 
-if(isset($_POST['ins'])){
-    include 'connection/connection.php' ;
-    $n = $_POST['n'];
-    for($i=1;$i<=$n;$i++){
-        $agency_name = $_POST[$i."agency_name"];
-        $sql = "INSERT INTO agency_tb VALUES (?)";
-        $params = array($agency_name);
-        $pp =sqlsrv_query($conn, $sql , $params);
+<button onclick="add_element('form_insert','table_insert');">+เพิ่ม</button>
+<button onclick="$('#form_insert').submit();">บันทึก</button>
+
+<?php
+include("./connection/connection.php");
+@$mode = $_REQUEST["mode"];
+
+if ($mode == "insert_data") {
+$agency_name = $_REQUEST["agency_name"];
+
+
+print_r($agency_name);
+
+if (count($agency_name) > "0") {
+
+foreach ($agency_name as $first_name) {
+
+    if (trim($first_name) != "") {
+        //    echo "<br>".$first_name; 
+
+         $sql = "INSERT INTO agency_tb (agency_name)
+         VALUES ('$first_name')";
+        $pp =sqlsrv_query($conn, $sql);
     }
-    echo '<script>alert("เพิ่มเรียบร้อย");</script>';
-    echo '<script>window.location.href="?page=add_agency"</script>';
 }
-?> 
+}
 
-</form>
-</div>
+//  $sql = "INSERT INTO main_user (user_agency,user_lname,user_username,user_password,user_status,user_add_date)
+//  VALUES ('$agency','$lname','$username','$password','1','$date_today')";
 
+//  $conn->query($sql);
 
+echo "<script>location.href='?page=add_agency';</script>";
+}
 
-</section>

@@ -1,12 +1,13 @@
 <?php
 $serverName = "LAPTOP-O7F4B0NM"; //LAPTOP-O7F4B0NM , DESKTOP-R0ETL6G , PLUEMMER\SQLEXPRESS
 $serverName2 = "DESKTOP-R0ETL6G";
-$user = "";
-$pass = "";
+$serverName3 = "DESKTOP-2ML5VOK";
+$user = "pluem";
+$pass = "1234";
 
 
 $connectionInfo = array( "Database"=>"Project5", "UID"=>$user, "PWD"=>$pass , "characterSet" => "UTF-8");
-$conn = sqlsrv_connect( $serverName2, $connectionInfo);
+$conn = sqlsrv_connect( $serverName3, $connectionInfo);
 
 
 if( $conn ) {

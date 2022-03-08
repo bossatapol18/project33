@@ -35,7 +35,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                             <div class="">
                                                 <div class="form-group mb-2">
                                                     <label for="">สถานะของเอกสาร</label>
-                                                    <select id="quantidade" class="form-control" name="status_name" value="<?php echo $data2['status_name'] ?>" style="height: unset !important;" required>
+                                                    <select id="quantidade" class="form-control" name="status_name" value="<?php echo $data2['status_name'] ?>" style="height: unset !important;">
                                                         <!-- <option selected>กรุณาเลือกสถานะ</option> -->
 
                                                         <?php
@@ -70,9 +70,9 @@ $date_today = (date('d/m/Y H:i:s'));
                                             <div class="">
                                                 <div class="form-group mb-2">
                                                     <label for="">วันที่แต่งตั้ง</label>
-                                                    <div class="input-group">
+                                                    <div class="input-group" >
                                                         <input id="" type="text" name="status_date" class=" form-control" value="<?php echo dateThai($data2['status_date']) ?>" disabled>
-                                                        <input id="mydate" type="text" name="status_date" class=" form-control" required>
+                                                        <input id="mydate" type="text" name="status_date" class=" form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -88,7 +88,7 @@ $date_today = (date('d/m/Y H:i:s'));
                                             <div class="">
                                                 <div class="form-group mb-2">
                                                     <label for="">วาระจากที่ประชุม สมอ. </label>
-                                                    <input type="text" name="standard_meet" class="form-control" value="<?php echo $result["standard_meet"] ?>">
+                                                    <input type="text" name="standard_meet" class="form-control" value="<?php echo $result["standard_meet"] ?>" required>
                                                 </div>
                                             </div>
                                         </div>

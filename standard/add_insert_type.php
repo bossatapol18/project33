@@ -1,73 +1,51 @@
+<form id="form_insert" action="" method="post">
 
-<form method="post" action="">
-<section class="upcoming-meetings" id="meetings">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2 class="font-mirt">เพิ่มข้อมูลสถานะ</h2>
-                </div>
-            </div>
-        <div class="container card-regis font">
-            <hr>
-            <div class="row">
-    <div class="col-md-8">
-<form action="" method="post">
-    <label>กรุณากรอกจำนวนสถานะที่ต้องการเพิ่ม</label>
-    <input type="text" class="form-control" name="n" value="">
-    <br>
-    <input type="submit" name="s" value="เพิ่มจำนวนฟอร์ม" class="btn btn-info" > 
+<input type="hidden" name="mode" value="insert_data">
+
+<table id="table_insert">
+    <tr>
+        <td>ชื่อสถานะ: <input type="text" class="form-control" name="statuss_name[]"></td>
+    </tr>
+    <tr>
+        <td align="right">
+            <button type="button" onclick="$(this).parent().parent().parent().remove();">-ลบ</button>
+        </td>
+    </tr>
+</table>
 </form>
-    </div>
-            </div>
-<hr>
-<div class="row">
-    <div class="col-md-8">
-        <form action="" method="post">
-    <?php
-    @$n  = $_POST['n'];
-    for($i=1;$i<=$n;$i++) : 
-    ?>
-    <lable>ชื่อสถานะ</lable> 
-    <input type="text" class="form-control" name="<?php echo $i. 'statuss_name' ; ?>" value=""> <br><br>
-    <input type="hidden" name="n" value="<?php echo $n; ?>">
-   
-    <?php endfor ;  ?>
-    <input type="submit" name="ins" class="btn btn-primary" value="บันทึกข้อมูลการเพิ่มสถานะ">  
-</form>
-    </div>
-</div>
-<?php 
-if(isset($_POST['ins'])){
-    include 'connection/connection.php' ;
-    $n = $_POST['n'];
-    for ($i=1;$i<=$n;$i++) {
-        $statuss_name = $_POST[$i . "statuss_name"];
-        $sql = "INSERT INTO select_status VALUES (?)";
-        $params = array($statuss_name);
-        $pp =sqlsrv_query($conn, $sql , $params);
+
+<button onclick="add_element('form_insert','table_insert');">+เพิ่ม</button>
+<button onclick="$('#form_insert').submit();">บันทึก</button>
+
+<?php
+include("./connection/connection.php");
+@$mode = $_REQUEST["mode"];
+
+if ($mode == "insert_data") {
+$statuss_name = $_REQUEST["statuss_name"];
+
+
+print_r($statuss_name);
+
+if (count($statuss_name) > "0") {
+
+foreach ($statuss_name as $first_name) {
+
+    if (trim($first_name) != "") {
+        //    echo "<br>".$first_name; 
+
+         $sql = "INSERT INTO select_status (statuss_name)
+         VALUES ('$first_name')";
+        $pp =sqlsrv_query($conn, $sql);
     }
-    echo '<script>alert("เพิ่มเรียบร้อย");</script>';
-    echo '<script>window.location.href="?page=add_type"</script>';
 }
-?> 
+}
 
-</form>
-</div>
+//  $sql = "INSERT INTO main_user (user_statuss_name,user_lname,user_username,user_password,user_status,user_add_date)
+//  VALUES ('$statuss_name','$lname','$username','$password','1','$date_today')";
 
+//  $conn->query($sql);
 
+echo "<script>location.href='?page=add_type';</script>";
+}
 
-</section>
-
-<!-- if (sqlsrv_query($conn, $sql , $params)) {
-            $alert = '<script type="text/javascript">';
-            $alert .= 'alert("เพิ่มข้อมูลสถานะสำเร็จ !!");';
-            $alert .= 'window.location.href = "?page=add_type";';
-            $alert .= '</script>';
-            echo $alert;
-            exit();
-        } else {
-            echo "Error: " . $sql . "<br>" . sqlsrv_errors($conn);
-        }
-        sqlsrv_close($conn);
-    } -->

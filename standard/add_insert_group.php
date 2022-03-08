@@ -1,52 +1,51 @@
+<form id="form_insert" action="" method="post">
 
-<form method="post" action="">
-<section class="upcoming-meetings" id="meetings">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2 class="font-mirt">เพิ่มข้อมูลกลุ่มผลิตภัณฑ์</h2>
-                </div>
-            </div>
-        <div class="container card-regis font">
-            <hr>
-<form action="" method="post">
-    <input type="text" class="control-form" name="n" value="">
-    <input type="submit" name="s" value="เพิ่มจำนวนฟอร์ม" class="btn btn-info" > 
+<input type="hidden" name="mode" value="insert_data">
+
+<table id="table_insert">
+    <tr>
+        <td>ชื่อกลุ่มผลิตภัณฑ์: <input type="text" class="form-control" name="group_name[]"></td>
+    </tr>
+    <tr>
+        <td align="right">
+            <button type="button" onclick="$(this).parent().parent().parent().remove();">-ลบ</button>
+        </td>
+    </tr>
+</table>
 </form>
 
-<hr>
-        <form action="" method="post">
-    <?php
-    @$n  = $_POST['n'];
-    for($i=1;$i<=$n;$i++) : 
-    ?>
-    <lable>ชื่อกลุ่มผลิตภัณฑ์</lable> 
-    <input type="text" class="control-form" name="<?php echo $i. 'group_name' ; ?>" value=""> <br><br>
-    <input type="hidden" name="n" value="<?php echo $n; ?>">
-  
-   
-    <?php endfor ;  ?>
-    <input type="submit" name="ins" class="btn btn-primary" value="บันทึกข้อมูลการเพิ่มกลุ่มผลิตภัณฑ์">  
-</form>
-<?php 
-if(isset($_POST['ins'])){
-    include 'connection/connection.php' ;
-    $n = $_POST['n'];
-    for($i=1;$i<=$n;$i++){
-        $group_name = $_POST[$i."group_name"];
-        $sql = "INSERT INTO group_tb VALUES (?)";
-        $params = array($group_name);
-        $pp =sqlsrv_query($conn, $sql , $params);
+<button onclick="add_element('form_insert','table_insert');">+เพิ่ม</button>
+<button onclick="$('#form_insert').submit();">บันทึก</button>
+
+<?php
+include("./connection/connection.php");
+@$mode = $_REQUEST["mode"];
+
+if ($mode == "insert_data") {
+$group_name = $_REQUEST["group_name"];
+
+
+print_r($group_name);
+
+if (count($group_name) > "0") {
+
+foreach ($group_name as $first_name) {
+
+    if (trim($first_name) != "") {
+        //    echo "<br>".$first_name; 
+
+         $sql = "INSERT INTO group_tb (group_name)
+         VALUES ('$first_name')";
+        $pp =sqlsrv_query($conn, $sql);
     }
-    echo '<script>alert("เพิ่มเรียบร้อย!!");</script>';
-    echo '<script>window.location.href="?page=add_group"</script>';
 }
-?> 
+}
 
-</form>
-</div>
+//  $sql = "INSERT INTO main_user (user_group_name,user_lname,user_username,user_password,user_status,user_add_date)
+//  VALUES ('$group_name','$lname','$username','$password','1','$date_today')";
 
+//  $conn->query($sql);
 
+echo "<script>location.href='?page=add_group';</script>";
+}
 
-</section>
