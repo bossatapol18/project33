@@ -36,6 +36,7 @@ $date_today = (date('d/m/Y H:i:s'));
 
                 <input type="hidden" name="mode" value="insert_data">
 
+                <div class="row">
                 <div class="col-md-6">
                     <div class="card mt-4">
                         <div class="card-body">
@@ -61,8 +62,8 @@ $date_today = (date('d/m/Y H:i:s'));
                         </div>
                     </div>
                 </div>
-
-
+                </div>
+<div class="row">
                 <div class="col-md-4">
                     <div class="card mt-4">
                         <div class="card-body">
@@ -103,8 +104,9 @@ $date_today = (date('d/m/Y H:i:s'));
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4">
+</div>
+<div class="row">
+<div class="col-md-4">
                     <div class="card mt-4">
                         <div class="card-body">
                             <div class="">
@@ -166,8 +168,10 @@ $date_today = (date('d/m/Y H:i:s'));
                         </div>
                     </div>
                 </div>
+                                            </div>
 
                 <!-- หลายฟอร์ม -->
+                <div class="row">
                 <div class="col-md-4">
                     <div class="card mt-4">
                         <div class="card-body">
@@ -293,58 +297,8 @@ $date_today = (date('d/m/Y H:i:s'));
                     </div>
                 </div>
 
-                <!-- <div class="paste-new-forms1"></div> -->
-                <!--  -->
-
-                <!-- หลายฟอร์ม -->
-                <!-- <div class="col-md-6">
-                            <div class="card mt-4">
-                                <div class="card-body">
-                                    <div class="">
-                                        <label for="">ประเภทผลิตภัณฑ์</label>
-                                        <a href="javascript:void(0)" onclick="add_element('main2','sub_main2');" class="float-end btn btn-success">เพิ่ม</a>
-                                        <div class="main-form2 mt-3" id="main2">
-                                            <select class="form-control" name="type_id[]" id="type_id" style="height: unset !important;">
-                                                <option selected disabled>กรุณาเลือกประเภทผลิตภัณฑ์</option>
-                                                <?php
-                                                $sql3 = "SELECT * FROM type_tb";
-                                                $query3 = sqlsrv_query($conn, $sql3);
-                                                while ($result = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $result['type_id'];  ?>">
-                                                        <?php echo $result['type_name'];  ?></option>
-                                                <?php } ?>
-                                            </select>
-                                            <div style="display: none;">
-                                                <div class="row" id="sub_main2">
-                                                    <div class="">
-                                                        <div class="form-group mb-2 input-group mt-2">
-
-                                                            <select class="form-control" name="type_id[]" id="type_id" style="height: unset !important;">
-                                                                <option selected disabled>กรุณาเลือกประเภทผลิตภัณฑ์
-                                                                </option>
-                                                                <?php
-                                                                $sql3 = "SELECT * FROM type_tb";
-                                                                $query3 = sqlsrv_query($conn, $sql3);
-                                                                while ($result = sqlsrv_fetch_array($query3, SQLSRV_FETCH_ASSOC)) { ?>
-                                                                    <option value="<?php echo $result['type_id'];  ?>">
-                                                                        <?php echo $result['type_name'];  ?></option>
-                                                                <?php } ?>
-                                                            </select>
-                                                            <button type="button" onclick="$(this).parent().remove();" class="remove-btn btn btn-danger ">ลบ</button>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div> -->
-
+                </div>
+<div class="row">
                 <div class="col-md-6">
                     <div class="card mt-4">
                         <div class="card-body">
@@ -437,6 +391,7 @@ $date_today = (date('d/m/Y H:i:s'));
                             </div>
 
                         </div>
+                        </div>
 
                     </div>
                 </div>
@@ -444,7 +399,7 @@ $date_today = (date('d/m/Y H:i:s'));
             </div>
 
             <div>
-                <hr>
+            
                 <br>
                 <br>
                 <br>
@@ -454,7 +409,8 @@ $date_today = (date('d/m/Y H:i:s'));
                 
                 <center>
                     <!--  -->
-                    <button type="submit" class="btn btn-primary">
+                
+                    <button type="submit" class="btn btn-lg btn-primary">
                         <h5 class="font-mirt">บันทึกข้อมูล</h5>
                     </button>
                 </center>
