@@ -7,7 +7,7 @@ $pass = "";
 
 
 $connectionInfo = array( "Database"=>"Project5", "UID"=>$user, "PWD"=>$pass , "characterSet" => "UTF-8");
-$conn = sqlsrv_connect( $serverName3, $connectionInfo);
+$conn = sqlsrv_connect( $serverName, $connectionInfo);
 
 
 if( $conn ) {
